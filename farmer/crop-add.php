@@ -89,7 +89,7 @@
                                     <div class="col-lg-6">
                                         <label class="control-label pt-2" for="inputDefault">End Date<span class="required">*</span></label>
                                         <div class="col-lg">
-                                            <input type="date" class="form-control" id="start_date" value=''>
+                                            <input type="date" class="form-control" id="end_date" value=''>
                                             <div id="name_err" style="color:red"></div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
                                     <div class="col-lg">
                                         <label class="control-label pt-2" for="inputDefault">Address<span class="required">*</span></label>
                                         <div class="col-lg">
-                                            <textarea class="form-control" id="start_date" value=''></textarea>
+                                            <textarea class="form-control" id="address" value=''></textarea>
                                             <div id="name_err" style="color:red"></div>
                                         </div>
                                     </div>
@@ -107,16 +107,16 @@
                                     <div class="col-lg-6">
                                         <label class="control-label pt-2" for="inputDefault">Area In Acers<span class="required">*</span></label>
                                         <div class="col-lg">
-                                            <input type="text" class="form-control" id="start_date" value=''>
+                                            <input type="text" class="form-control" id="acers" value=''>
                                             <div id="name_err" style="color:red"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="control-label pt-2" for="inputDefault">Type Of Jute<span class="required">*</span></label>
                                         <div class="col-lg">
-                                            <select name="" id="">
-                                                <option value=""> White Jute(capsulari)</option>
-                                                <option value=""> Dark Jute(olitorius)</option>
+                                            <select name="" id="type" class="form-control">
+                                                <option value="White Jute"> White Jute(capsulari)</option>
+                                                <option value="Dark Jute"> Dark Jute(olitorius)</option>
                                             </select>
                                             <div id="name_err" style="color:red"></div>
                                         </div>
@@ -129,17 +129,8 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6"></div>
                                     <div class="col-lg-3">
-                                        <?php
-                                        if (isset($_POST['fac_id'])) {
-                                            echo "<button class='btn btn-primary' id='update' style='width:100%;' onclick='upd();'>Update</button>";
-                                        } else {
-                                            echo "<button class='btn btn-primary' id='add' style='width:100%;' onclick='add();'>Add Crop</button>";
-                                        }
-                                        ?>
+                                        <button class='btn btn-primary' id='add' style='width:100%;' onclick='add();'>Add Crop</button>
                                     </div>
-                                    <input type="hidden" value="<?php if (isset($_POST['fac_id'])) {
-                                                                    echo $_POST['fac_id'];
-                                                                } ?>" id='fac_id'>
                                     <div class="col-lg-3"></div>
                                 </div>
                             </div>
@@ -201,6 +192,33 @@
 
     <!-- Examples -->
     <script src="js/examples/examples.dashboard.js"></script>
+
+    <script>
+        function add() {
+            var start_date = $('#start_date').val();
+            var end_date = $('#end_date').val();
+            var address = $('#address').val();
+            var acers = $('#acers').val();
+            var type = $('#type').val();
+            $.ajax({
+                url: 'queries/crop.php',
+                type: 'post',
+                dataType: 'text',
+                data: {
+                    start_date: start_date,
+                    end_date: end_date,
+                    address: address,
+                    acers: acers,
+                    type: type,
+                    crop_add: ''
+                },
+                success: function(data) {
+                    alert(data);
+                    window.location = "crop-view.php";
+                }
+            });
+        }
+    </script>
 
 </body>
 

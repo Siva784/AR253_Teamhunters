@@ -10,13 +10,13 @@
 	        </div>
 	    </div>
 	    <?php
-        // if (!isset($_SESSION['far_id']) || isset($_GET['lo'])) {
-        //     session_destroy();
-        //     header('Location: ../login.php');
-        // }
-        // $far = "SELECT * FROM `faculty` WHERE far_id=" . $_SESSION['far_id'];
-        // $far = mysqli_query($conn, $far);
-        // $far = mysqli_fetch_assoc($far);
+        if (!isset($_SESSION['far_id']) || isset($_GET['lo'])) {
+            session_destroy();
+            header('Location: ../falogin.php');
+        }
+        $far = "SELECT * FROM `farmers` WHERE far_id=" . $_SESSION['far_id'];
+        $far = mysqli_query($conn, $far);
+        $far = mysqli_fetch_assoc($far);
         ?>
 	    <!-- start: search & user box -->
 	    <div class="header-right">
@@ -26,9 +26,7 @@
 	                <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 	                    <span class="name">
 						<?php
-						// echo $far['far_name']; ?></span>
-						<span class="role"><?php
-						// echo $far['far_designation']; ?></span>
+						echo $far['far_name']; ?></span>
 	                </div>
 
 	                <i class="fa custom-caret"></i>

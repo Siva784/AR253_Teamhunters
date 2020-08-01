@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'slsweb');
+$conn = mysqli_connect('localhost', 'root', '', 'sih');
 session_start();
 
 ?>

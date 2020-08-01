@@ -42,6 +42,16 @@
 
 		<!-- start: header -->
 		<?php include_once 'includes/header.php'; ?>
+
+		<?php
+		$investments = "SELECT * FROM `crop_investment` WHERE crop_id={$_POST['crop_id']} order by invest_date DESC";
+		$investments = mysqli_query($conn, $investments);
+
+		$crop = "SELECT * FROM `crops` WHERE crop_id={$_POST['crop_id']}";
+		$crop = mysqli_query($conn, $crop);
+		$crop = mysqli_fetch_assoc($crop);
+
+		?>
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
@@ -64,270 +74,103 @@
 
 			<section role="main" class="content-body">
 				<header class="page-header">
-					<h2>Dashboard</h2>
+					<h2>Crop</h2>
 				</header>
 				<!-- start: page -->
 				<div class="row">
-					<div class="col-xl-6">
+					<div class="col">
 						<section class="card">
+							<header class="card-header">
+								<h2 class="card-title">Add Investments</h2>
+							</header>
 							<div class="card-body">
-								<header class="card-header card-header-transparent">
-									<h2 class="card-title">Details</h2>
-								</header>
-								<?php
-								$query1 = "SELECT * from faculty where fac_id=" . $_SESSION['fac_id'];
-								$query1 = mysqli_query($conn, $query1);
-								$row1 = mysqli_fetch_assoc($query1);
-								?>
-
+								<table style="text-align:left" class="table" border=1>
+									<tr>
+										<td>Crop Start Date</td>
+										<td><?php echo $crop['crop_start']; ?></td>
+									</tr>
+									<tr>
+										<td>Crop End Date</td>
+										<td><?php echo $crop['crop_end']; ?></td>
+									</tr>
+									<tr>
+										<td>Land Area in acers</td>
+										<td><?php echo $crop['crop_acers']; ?></td>
+									</tr>
+									<tr>
+										<td>Crop Type</td>
+										<td><?php echo $crop['crop_type']; ?></td>
+									</tr>
+								</table>
 								<div class="form-group row">
-									<label class="col-lg-4 control-label text-lg-right pt-2" for="inputDefault">Name</label>
-									<div class='col-lg-8'>
-										<h5 style="color:black;"><b><?php echo $row1['fac_name']; ?></b></h5>
+									<div class="col-lg-6">
+										<label class="control-label pt-2" for="inputDefault">Investment Reason<span class="required">*</span></label>
+										<div class="col-lg">
+											<select name="" id="invest_reason" class='form-control'>
+												<option value="Seeds">Seeds</option>
+												<option value="Labour">Labour</option>
+												<option value="Pesticides">Pesticides</option>
+												<option value="Fertilizers">Fertilizers</option>
+												<option value="Machinery">Machinery</option>
+											</select>
+											<div id="name_err" style="color:red"></div>
+										</div>
 									</div>
-									<label class="col-lg-4 control-label text-lg-right pt-2" for="inputDefault">Mail</label>
-									<div class='col-lg-8'>
-										<h5 style="color:black;"><b><?php echo $row1['fac_mail']; ?></b></h5>
+									<div class="col-lg-3">
+										<label class="control-label pt-2" for="inputDefault">Amount In Rupees<span class="required">*</span></label>
+										<div class="col-lg">
+											<input type="text" class="form-control" id="invest_amt" value=''>
+											<div id="name_err" style="color:red"></div>
+										</div>
 									</div>
-									<label class="col-lg-4 control-label text-lg-right pt-2" for="inputDefault">Role</label>
-									<div class='col-lg-8'>
-										<h5 style="color:black;"><b><?php if ($row1['fac_role'] == 0) echo 'Dean';
-																	else if ($row1['fac_role'] == 1) echo 'H.O.D';
-																	else if ($row1['fac_role'] == 2) echo 'Teacher';
-																	?></b></h5>
+									<div class="col-lg-3">
+										<label class="control-label pt-2" for="inputDefault">Date<span class="required">*</span></label>
+										<div class="col-lg">
+											<input type="date" class="form-control" id="invest_date" value=''>
+											<div id="name_err" style="color:red"></div>
+										</div>
 									</div>
-									<label class="col-lg-4 control-label text-lg-right pt-2" for="inputDefault">Designation</label>
-									<div class='col-lg-8'>
-										<h5 style="color:black;"><b><?php echo $row1['fac_designation']; ?></b></h5>
+
+								</div>
+
+
+								<hr>
+								<div class="form-group row">
+									<div class="col-lg" style="text-align:center">
+										<button class='btn btn-primary' id='add' onclick='add();'>Add investments</button>
+
 									</div>
-									<label class="col-lg-4 control-label text-lg-right pt-2" for="inputDefault">Department</label>
-									<div class='col-lg-8'>
-										<h5 style="color:black;"><b><?php
-																	$query2 = "SELECT * from department where dept_id=" . $row1['dept_id'];
-																	$query2 = mysqli_query($conn, $query2);
-																	$row2 = mysqli_fetch_assoc($query2);
-																	echo $row2['dept_name'];
-																	?></b></h5>
-									</div>
+									<input type="hidden" value="<?php if (isset($_POST['fac_id'])) {
+																	echo $_POST['fac_id'];
+																} ?>" id='fac_id'>
 								</div>
 							</div>
-						</section>
-						<section class="card">
 							<div class="card-body">
-								<header class="card-header card-header-transparent">
-									<h2 class="card-title">Department Faculty</h2>
-								</header>
-								<table class="table table-responsive-md table-striped mb-0">
-									<?php
-									$query = "SELECT dept_id from faculty where fac_id=" . $_SESSION['fac_id'];
-									$query = mysqli_query($conn, $query);
-									$row1 = mysqli_fetch_assoc($query);
-									$fac = "SELECT fac_id,fac_name,fac_mail,fac_phnum from faculty where dept_id=" . $row1['dept_id'] . " GROUP BY RAND() LIMIT 6";
-									$fac = mysqli_query($conn, $fac);
-									if (mysqli_num_rows($fac) > 0) {
+
+								<table class="table table-bordered table-striped mb-0" id="datatable-default">
+									<thead>
+										<th>Investment Reason</th>
+										<th>Investment Amount</th>
+										<th>Investment Date</th>
+									</thead>
+									<tbody>
+										<?php
+										$sum=0;
+										while ($investment = mysqli_fetch_assoc($investments)) {
 										?>
-										<thead>
 											<tr>
-												<th>Name</th>
-												<th>Email</th>
+												
+												<td><?php $sum = $sum + $investment['invest_amt'];echo $investment['invest_reason']; ?></td>
+												<td><?php echo $investment['invest_date']; ?></td>
+												<td><?php echo $investment['invest_amt']; ?></td>
 											</tr>
-										</thead>
-										<tbody>
-											<?php
-											while ($row = mysqli_fetch_assoc($fac)) {
-												?>
-												<tr>
-													<td>
-														<a target="_blank" href="../fac_details.php?fac_id=<?php echo $row['fac_id']; ?>">
-															<?php echo $row['fac_name']; ?>
-														</a>
-													</td>
-													<td><?php echo $row['fac_mail']; ?></td>
-												</tr>
-											<?php } ?>
-											<tr>
-												<td colspan="2" style="text-align:center"><a href="../faculty.php#<?php echo $row1['dept_id']; ?>" target="_blank">View All</a></td>
-											</tr>
-										</tbody>
-									<?php } else echo "No Records Found"; ?>
+										<?php } ?>
+										<tr>
+											<td colspan="2" style="text-align: right;">Total Investment Amount</td>
+											<td ><?php echo "$sum"; ?></td>
+										</tr>
+									</tbody>
 								</table>
-							</div>
-						</section>
-
-
-					</div>
-					<div class="col-xl-6">
-						<section class="card">
-							<div class="card-body">
-								<header class="card-header card-header-transparent">
-									<h2 class="card-title">Publications</h2>
-								</header>
-								<table class="table table-responsive-md table-striped mb-0">
-									<?php
-									$query = "SELECT dept_id,dept_name from department";
-									$query = mysqli_query($conn, $query);
-									if (mysqli_num_rows($query) > 0) {
-										?>
-										<thead>
-											<tr>
-												<th>Department</th>
-												<th> Count </th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-											while ($row = mysqli_fetch_assoc($query)) {
-												?>
-												<tr>
-													<td>
-														<a target="_blank" href="../departments.php?dept_id=<?php echo $row['dept_id']; ?>">
-															<?php echo $row['dept_name']; ?>
-														</a>
-													</td>
-													<?php
-													$pub_cnt = "SELECT COUNT(pub_id) as cnt from publication";
-													$pub_cnt = mysqli_query($conn, $pub_cnt);
-													$pub_cnt = mysqli_fetch_assoc($pub_cnt);
-													$pub = "SELECT DISTINCT pub_mapping.pub_id from pub_mapping,faculty WHERE faculty.dept_id=" . $row['dept_id'] . " and faculty.fac_id=pub_mapping.fac_id";
-													$pub = mysqli_query($conn, $pub);
-													$pub_num = mysqli_num_rows($pub);
-													?>
-													<td>
-														<?php
-														echo $pub_num;
-														?>
-													</td>
-												</tr>
-											<?php } ?>
-										</tbody>
-									<?php } else echo "No Record Found"; ?>
-								</table>
-							</div>
-						</section>
-						<section class="card">
-							<div class="card-body">
-								<header class="card-header card-header-transparent">
-									<h2 class="card-title">Recent Events</h2>
-								</header>
-								<table class="table table-responsive-md table-striped mb-0">
-									<?php
-									$query = "SELECT event_id,event_title,event_from_date,event_to_date from events where event_level_status=2 order by event_from_date DESC";
-									// echo $query;
-									$query = mysqli_query($conn, $query);
-									if (mysqli_num_rows($query) > 0) {
-										?>
-										<thead>
-											<tr>
-												<th>Event</th>
-												<th>From Date</th>
-												<th>To Date</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-											while ($row = mysqli_fetch_assoc($query)) {
-												?>
-												<tr>
-													<td>
-														<a target="_blank" href="../event_details.php?event_id=<?php echo $row['event_id']; ?>">
-															<?php echo urldecode($row['event_title']); ?>
-														</a>
-													</td>
-													<td>
-														<?php
-														echo urldecode($row['event_from_date']);
-														?>
-													</td>
-													<td>
-														<?php
-														echo $row['event_to_date'];
-														?>
-													</td>
-												</tr>
-											<?php }
-											?>
-										</tbody>
-									<?php } else echo "No Record Found"; ?>
-								</table>
-							</div>
-						</section>
-					</div>
-				</div>
-				<div class="row">
-
-
-				</div>
-				<div class='row'>
-					<div class="col-xl">
-						<section class="card">
-							<div class="card-body">
-								<?php
-								if ($_SESSION['fac_role'] == 0 || $_SESSION['fac_role'] == 3) {
-									?>
-									<header class="card-header card-header-transparent">
-										<h2 class="card-title">Most Recent Publications</h2>
-									</header>
-									<table class="table table-responsive-md table-striped mb-0">
-										<tbody>
-											<?php
-											$pub_id = "SELECT pub_id FROM publication ORDER by publication.pub_year DESC limit 5";
-											$pub_id = mysqli_query($conn, $pub_id);
-											$p = mysqli_num_rows($pub_id);
-											while ($row = mysqli_fetch_assoc($pub_id)) {
-												$pub_q = "SELECT * from publication where pub_id=" . $row['pub_id'];
-												$pub_q = mysqli_query($conn, $pub_q);
-												$result = mysqli_fetch_assoc($pub_q);
-												?>
-												<tr>
-													<td> <?php echo urldecode($result['pub_author'] . ' (' . $result['pub_year'] . ') , ' . $result['pub_title'] . ' ,<b> ' . $result['pub_type_name'] . '</b>, ' . $result['pub_publisher'] . ',' . $result['pub_volume'] . ',' . $result['pub_number'] . "," . $result['pub_pages']);
-															if (!empty($result['pub_impact'])) {
-																echo ', (' . $result['pub_impact'] . ').';
-															} else {
-																echo '.';
-															} ?> </td>
-												</tr>
-											<?php } ?>
-											<?php
-											if ($p == 0) {
-												echo "No Records Found";
-											}
-											?>
-										</tbody>
-									</table>
-								<?php
-								} else {
-									?>
-									<header class="card-header card-header-transparent">
-										<h2 class="card-title">Most Recent Publications</h2>
-									</header>
-									<table class="table table-responsive-md table-striped mb-0">
-										<tbody>
-											<?php
-											$pub_id = "SELECT pub_id FROM publication ORDER by publication.pub_year DESC limit 5";
-											$pub_id = mysqli_query($conn, $pub_id);
-											$p = mysqli_num_rows($pub_id);
-											while ($row = mysqli_fetch_assoc($pub_id)) {
-												$pub_q = "SELECT * from publication where pub_id=" . $row['pub_id'];
-												$pub_q = mysqli_query($conn, $pub_q);
-												$result = mysqli_fetch_assoc($pub_q);
-												?>
-												<tr>
-													<td> <?php echo $result['pub_author'] . ' (' . $result['pub_year'] . ') , ' . $result['pub_title'] . ' ,<b> ' . $result['pub_type_name'] . '</b>, ' . $result['pub_publisher'] . ',' . $result['pub_volume'] . ',' . $result['pub_number'] . "," . $result['pub_pages'];
-															if (!empty($result['pub_impact'])) {
-																echo ', (' . $result['pub_impact'] . ').';
-															} else {
-																echo '.';
-															} ?> </td>
-												</tr>
-											<?php } ?>
-											<?php
-											if ($p == 0) {
-												echo "No Records Found";
-											}
-											?>
-										</tbody>
-									</table>
-								<?php } ?>
 							</div>
 						</section>
 					</div>
@@ -387,7 +230,31 @@
 
 	<!-- Examples -->
 	<script src="js/examples/examples.dashboard.js"></script>
+	<script>
+		function add() {
+			var invest_reason = $('#invest_reason').val();
+			var invest_amt = $('#invest_amt').val();
+			var invest_date = $('#invest_date').val();
 
+			$.ajax({
+				url: 'queries/crop.php',
+				type: 'post',
+				dataType: 'text',
+				data: {
+					invest_reason: invest_reason,
+					invest_amt: invest_amt,
+					invest_date: invest_date,
+					crop_id: '<?php echo $_POST['crop_id']; ?>',
+					add_invest: '',
+
+				},
+				success: function(data) {
+					alert(data);
+					window.location = "crop-view.php";
+				}
+			});
+		}
+	</script>
 </body>
 
 </html>

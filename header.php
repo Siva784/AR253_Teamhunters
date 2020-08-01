@@ -56,27 +56,26 @@
 		<div class="top-menu">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-2">
+					<div class="col-md-5">
 						<div ><a href="index.html"><span>NATIONAL JUTE BOARD</span></a></div>
 					</div>
-					<div class="col-md-10 text-right menu-1">
+					<div class="col-md-7 text-right menu-1">
 						<ul>
 							<li class="active"><a href="index.php">HOME</a></li>
 							<li><a href="about.php">ABOUT</a></li>
 							<li><a href="training.php">TRAINING</a></li>
-							<!--<li class="has-dropdown">
-								<a href="blog.html">Blog</a>
+							<li class="has-dropdown">
+								<a href="blog.html">Login</a>
 								<ul class="dropdown">
-									<li><a href="#">menu 1</a></li>
-									<li><a href="#">menu 2</a></li>
-									<li><a href="#">menu 3</a></li>
-									<li><a href="#">menu 4</a></li>
+									<li><a href="mologin.php">Mill Owner</a></li>
+									<li><a href="falogin.php">Farmer</a></li>
+									
 								</ul>
-							</li>-->
-							<li><a href="login.php">LOGIN</a></li>
+							</li>
+							
 							<li><a href="contact.php">CONTACT</a></li>
 						
-							 <li class="btn-cta"><a href="#"><span>REGISTER</span></a></li> 
+							 <!-- <li class="btn-cta"><a href="#"><span>REGISTER</span></a></li>  -->
 						</ul>
 					</div>
 				</div>

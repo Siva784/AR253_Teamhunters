@@ -42,16 +42,6 @@
 
 		<!-- start: header -->
 		<?php include_once 'includes/header.php'; ?>
-
-		<?php
-		$sells = "SELECT * FROM `sold_mill` WHERE crop_id={$_POST['crop_id']}";
-		$sells = mysqli_query($conn, $sells);
-
-		$crop = "SELECT * FROM `crops` WHERE crop_id={$_POST['crop_id']}";
-		$crop = mysqli_query($conn, $crop);
-		$crop = mysqli_fetch_assoc($crop);
-
-		?>
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
@@ -74,121 +64,10 @@
 
 			<section role="main" class="content-body">
 				<header class="page-header">
-					<h2>Crop</h2>
+					<h2>Dashboard</h2>
 				</header>
 				<!-- start: page -->
-				<div class="row">
-					<div class="col">
-						<section class="card">
-							<header class="card-header">
-								<h2 class="card-title">Sell Crop</h2>
-							</header>
-							<div class="card-body">
-								<table style="text-align:left" class="table" border=1>
-									<tr>
-										<td>Crop Start Date</td>
-										<td><?php echo $crop['crop_start']; ?></td>
-									</tr>
-									<tr>
-										<td>Crop End Date</td>
-										<td><?php echo $crop['crop_end']; ?></td>
-									</tr>
-									<tr>
-										<td>Land Area in acers</td>
-										<td><?php echo $crop['crop_acers']; ?></td>
-									</tr>
-									<tr>
-										<td>Crop Type</td>
-										<td><?php echo $crop['crop_type']; ?></td>
-									</tr>
-								</table>
-								<div class="form-group row">
-									<div class="col-lg-4">
-										<label class="control-label pt-2" for="inputDefault">Jute Quantity(Kgs)<span class="required">*</span></label>
-										<div class="col-lg">
-											<input type="text" class="form-control" id='qty'>
-											<div id="name_err" style="color:red"></div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<label class="control-label pt-2" for="inputDefault">Selling Price<span class="required">*</span></label>
-										<div class="col-lg">
-											<input type="text" class="form-control" id="sell_price" value=''>
-											<div id="name_err" style="color:red"></div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<label class="control-label pt-2" for="inputDefault">Selling Mill<span class="required">*</span></label>
-										<div class="col-lg">
-											<select name="" id="mill_id" class="form-control">
-												<?php
-												$mills = "select * from mills";
-												$mills = mysqli_query($conn, $mills);
-												while ($mill = mysqli_fetch_assoc($mills)) {
-												?>
-													<option value="<?php echo $mill['mill_id']; ?>"><?php echo $mill['mill_name'] . "(" . $mill['district'] . ")"; ?></option>
-												<?php } ?>
-												<option value="10">Sai Ram Jute Mill(Eluru)</option>
-												<option value="11">Andhra Pradesh Fibers(Vijayanagaram)</option>
-											</select>
-											<div id="name_err" style="color:red"></div>
-										</div>
-									</div>
-
-								</div>
-
-
-								<hr>
-								<div class="form-group row">
-									<div class="col-lg" style="text-align:center">
-										<?php
-										if (isset($_POST['fac_id'])) {
-											echo "<button class='btn btn-primary' id='update' style='width:20%;' onclick='upd();'>Update</button>";
-										} else {
-											echo "<button class='btn btn-primary' id='add' style='width:20%;' onclick='add();'>Sell</button>";
-										}
-										?>
-									</div>
-									<input type="hidden" value="<?php if (isset($_POST['fac_id'])) {
-																	echo $_POST['fac_id'];
-																} ?>" id='fac_id'>
-								</div>
-							</div>
-							<div class="card-body">
-
-								<table class="table table-bordered table-striped mb-0" id="datatable-default">
-									<thead>
-										<th>Mill</th>
-										<th>Quantity in Kg</th>
-										<th>Price</th>
-									</thead>
-									<tbody>
-										<?php
-										$sum = 0;
-										while ($sell = mysqli_fetch_assoc($sells)) {
-											$mill = "select * from mills where mill_id={$sell['mill_id']}";
-											$mill = mysqli_query($conn,$mill);
-											$mill = mysqli_fetch_assoc($mill);
-										?>
-											<tr>
-
-												<td><?php $sum = $sum + $sell['sell_price'];
-													echo $mill['mill_name']; ?></td>
-												<td><?php echo $sell['sell_qty']; ?></td>
-												<td><?php echo $sell['sell_price']; ?></td>
-											</tr>
-										<?php } ?>
-										<tr>
-											<td colspan="2" style="text-align: right;">Total Amount</td>
-											<td><?php echo "$sum"; ?></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</section>
-					</div>
-				</div>
-
+				
 				<!-- end: page -->
 			</section>
 		</div>
@@ -243,31 +122,7 @@
 
 	<!-- Examples -->
 	<script src="js/examples/examples.dashboard.js"></script>
-	<script>
-		function add() {
-			var mill_id = $('#mill_id').val();
-			var sell_price = $('#sell_price').val();
-			var qty = $('#qty').val();
 
-			$.ajax({
-				url: 'queries/crop.php',
-				type: 'post',
-				dataType: 'text',
-				data: {
-					mill_id: mill_id,
-					sell_price: sell_price,
-					qty: qty,
-					crop_id: '<?php echo $_POST['crop_id']; ?>',
-					sell_crop: '',
-
-				},
-				success: function(data) {
-					alert(data);
-					window.location = "crop-view.php";
-				}
-			});
-		}
-	</script>
 </body>
 
 </html>
