@@ -74,88 +74,72 @@
 				<div class="row">
 					<div class="col">
 						<section class="card">
-							
+
 							<div class="card-body">
-							<form action="#" method="POST">
-							<div class="form-group row">
-                                    
-                                    <div class="col-lg-3">
-                                        <label class="control-label pt-2" for="inputDefault">Language<span class="required">*</span></label>
-                                        <div class="col-lg">
-                                            <select name="language" id="language" class="form-control">
-                                                <option value="telugu">Telugu</option>
-                                                <option value="english">English</option>
-                                            </select>
-                                           
-                                        </div>
-                                    </div>
-									<div class="col-lg-3">
-									<button type="submit" value="Get Videos" name="submit" class="btn btn-primary">Get Videos</button>
-                                    </div>
-							</form>
-								
+								<form action="#" method="POST">
+									<div class="form-group row">
+
+										<div class="col-lg-3">
+											<label class="control-label pt-2" for="inputDefault">Language<span class="required">*</span></label>
+											<div class="col-lg">
+												<select name="language" id="language" class="form-control">
+													<option value="telugu">Telugu</option>
+													<option value="english">English</option>
+												</select>
+
+											</div>
+										</div>
+										<div class="col-lg-3">
+											<button type="submit" value="Get Videos" name="submit" class="btn btn-primary">Get Videos</button>
+										</div>
+								</form>
+
 							</div>
 						</section>
 					</div>
 				</div>
 				<!-- end: page -->
 				<?php
-				 if(isset($_POST['submit']))
-				 {
+				if (isset($_POST['submit'])) {
 				?>
-				</section>
-				<section role="main" class="content-body">
 				<div class="row">
-				<div class="col">
-				<section class="card">
-							
-				<div class="card-body">
-					<div class="row">
-                <?php
-               
-                    $category="farmers";
-                    $language=$_POST['language'];
-                    
-                    $query="SELECT * FROM `training_videos` WHERE language='$language' and category='$category'";
-                    $result=mysqli_query($conn,$query);
-                    
-                    while($row=mysqli_fetch_row($result)){
-                        
-                        ?>
-                        <div class="col-md-6 animate-box">
-							<div class="row">
-								<?php echo "<h2>".$row[2]."</h2>";  ?>
-                        	</div>
-							<div class="row">
-								<?php echo $row[3];  ?>
-                        
-                        	</div>
-							<div class="row">
-								<u><h4>category </u> :<?php echo "<h4>".$row[1]."</h4>";  ?></h4> &nbsp&nbsp&nbsp<u> <h4>Language </u>: <?php echo "<h4>".$row[4]."</h4>";  ?></h4>
-							</div>
-                        
-						
-                        </div>
-                    <?php
-                    
-                    }
-					 ?>
-					</div>
-				</div>
+					<?php
+					$category = "farmers";
+					$language = $_POST['language'];
 
-			</div>
-			
-			</div>
-			
-			
-			</div>
-			</section>
+					$query = "SELECT * FROM `training_videos` WHERE language='$language' and category='$category'";
+					$result = mysqli_query($conn, $query);
+
+					while ($row = mysqli_fetch_row($result)) {
+					?>
+						<div class="col-6">
+							<section class="card">
+								<header class="card-header">
+									<h2 class="card-title"><?php echo $row[2];  ?></h2>
+								</header>
+								<div class="card-body">
+									<div class="row">
+										<?php echo $row[3];  ?>
+									</div>
+									<div class="row">
+											Category :<?php echo $row[1];  ?><br>
+											Language :<?php echo $row[4];  ?>
+									</div>
+								</div>
+							</section>
+						</div>
 			<?php
-				 }
-			?>
+				}
+				?>
+				</div>
+			</section>
+
+		<?php
+			}
+		?>
 		</div>
 		</div>
-		</section>
+	</section>
 	</section>
 
 	<!-- Vendor -->
