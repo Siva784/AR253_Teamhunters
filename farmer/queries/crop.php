@@ -63,6 +63,17 @@ if (isset($_POST['income_add'])) {
     }
 }
 
+if (isset($_POST['del_crop'])) {
+    $crop_id = $_POST['crop_id'];
+    $sold = "delete from crops where crop_id=$crop_id";
+    $sold = mysqli_query($conn, $sold);
+    if ($sold) {
+        echo "Crop Deleted";
+    } else {
+        echo "Failed To Delete";
+    }
+}
+
 
 
 ?>

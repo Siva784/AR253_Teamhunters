@@ -4,7 +4,10 @@
 <head>
 	<?php
 	include_once 'includes/head.php';
+
 	?>
+
+
 	<!-- Web Fonts  -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
@@ -64,54 +67,91 @@
 
 			<section role="main" class="content-body">
 				<header class="page-header">
-					<h2>Crop</h2>
+					<h2>Training Videos</h2>
 				</header>
+
 				<!-- start: page -->
 				<div class="row">
-					<div class="col-lg">
+					<div class="col">
 						<section class="card">
-							<header class="card-header">
-								<h2 class="card-title">Crop Reports</h2>
-							</header>
+							
 							<div class="card-body">
-								<div class="row">
-									<table class="table">
-										<thead>
-											<th>Crop Start Date</th>
-											<th>Crop End Date</th>
-											<th>Type</th>
-											<th>Acers</th>
-											<th>Get Report</th>
-										</thead>
-										<tbody>
-											<?php
-											$q = "SELECT * from crops where far_id={$_SESSION['far_id']}";
-											$q = mysqli_query($conn, $q);
-											while ($wq = mysqli_fetch_assoc($q)) {
-											?>
-											<tr>
-												<td><?php echo $wq['crop_start']; ?></td>
-												<td><?php echo $wq['crop_end']; ?></td>
-												<td><?php echo $wq['crop_type']; ?></td>
-												<td><?php echo $wq['crop_acers']; ?></td>
-												<td>
-													<form action="crop-report-detail.php" method="post">
-														<input type="hidden" name="crop_id" value="<?php echo $wq['crop_id']; ?>">
-														<input type="submit" value="Get Reports" class="btn btn-primary">
-													</form>
-												</td>
-											</tr>
-											<?php } ?>
-										</tbody>
-									</table>
-								</div>
+							<form action="#" method="POST">
+							<div class="form-group row">
+                                    
+                                    <div class="col-lg-3">
+                                        <label class="control-label pt-2" for="inputDefault">Language<span class="required">*</span></label>
+                                        <div class="col-lg">
+                                            <select name="language" id="language" class="form-control">
+                                                <option value="telugu">Telugu</option>
+                                                <option value="english">English</option>
+                                            </select>
+                                           
+                                        </div>
+                                    </div>
+									<div class="col-lg-3">
+									<button type="submit" value="Get Videos" name="submit" class="btn btn-primary">Get Videos</button>
+                                    </div>
+							</form>
+								
 							</div>
 						</section>
 					</div>
 				</div>
 				<!-- end: page -->
+				</section>
+				<section role="main" class="content-body">
+				<div class="row">
+				<div class="col">
+				<section class="card">
+							
+				<div class="card-body">
+                <?php
+                if(isset($_POST['submit']))
+                {
+                    $category="farmers";
+                    $language=$_POST['language'];
+                    
+                    $query="SELECT * FROM `training_videos` WHERE language='$language' and category='$category'";
+                    $result=mysqli_query($conn,$query);
+                    
+                    while($row=mysqli_fetch_row($result)){
+                        
+                        ?>
+                        <div class="col-md-6 animate-box">
+						<div class="row">
+						<?php echo "<h2>".$row[2]."</h2>";  ?>
+                        </div>
+						<div class="row">
+						<?php echo $row[3];  ?>
+                        
+                        </div>
+                        <div class="row">
+						<u><h4>category </u> :<?php echo "<h4>".$row[1]."</h4>";  ?></h4> &nbsp&nbsp&nbsp<u> <h4>Language </u>: <?php echo "<h4>".$row[4]."</h4>";  ?></h4>
+                        </div>
+                        
+						
+                        </div>
+                    <?php
+                    
+                    }
+
+                }
+                
+                ?>
+					
+				</div>
+
+			</div>
+			
+			</div>
+			
+			
+			</div>
 			</section>
 		</div>
+		</div>
+		</section>
 	</section>
 
 	<!-- Vendor -->
@@ -158,12 +198,26 @@
 	<!-- Theme Custom -->
 	<script src="js/custom.js"></script>
 
+	<!-- datatable js -->
+	<script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+	<script src="js/examples/examples.datatables.default.js"></script>
+	<script src="js/examples/examples.datatables.row.with.details.js"></script>
+	<script src="js/examples/examples.datatables.tabletools.js"></script>
+
 	<!-- Theme Initialization Files -->
 	<script src="js/theme.init.js"></script>
 
 	<!-- Examples -->
 	<script src="js/examples/examples.dashboard.js"></script>
-
+	<script>
+		function del(id) {
+			if (confirm("Confirm to Delete")) {
+				getrequest("queries/faculty.php", "fac_id=" + id + "&del_fac=''", "fac-view.php");
+				// location.reload();
+			}
+		}
+	</script>
 </body>
 
 </html>

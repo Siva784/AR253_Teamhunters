@@ -84,6 +84,7 @@
 								<h2 class="card-title">Sell Crop</h2>
 							</header>
 							<div class="card-body">
+							<h3>Crop Details</h3>
 								<table style="text-align:left" class="table" border=1>
 									<tr>
 										<td>Crop Start Date</td>

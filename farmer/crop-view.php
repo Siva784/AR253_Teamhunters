@@ -121,7 +121,7 @@
 													</form>
 												</td>
 												<td>
-													<input type="submit" value="Delete" class="btn btn-primary">
+													<input type="submit" value="Delete" class="btn btn-primary" onclick="del(<?php echo $crop['crop_id']; ?>)">
 												</td>
 											</tr>
 										<?php } ?>
@@ -194,9 +194,23 @@
 	<script src="js/examples/examples.dashboard.js"></script>
 	<script>
 		function del(id) {
-			if (confirm("Confirm to Delete")) {
-				getrequest("queries/faculty.php", "fac_id=" + id + "&del_fac=''", "fac-view.php");
-				// location.reload();
+			var data = {
+				crop_id: id,
+				del_crop: ''
+			};
+
+			if (confirm("Confirm to Approve")) {
+				$.ajax({
+					url: 'queries/crop.php',
+					type: 'post',
+					dataType: 'text',
+					data: data,
+
+					success: function(data) {
+						alert(data);
+						window.location = "crop-view.php";
+					}
+				});
 			}
 		}
 	</script>

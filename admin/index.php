@@ -13,7 +13,7 @@
 			session_start();
 			$_SESSION['admin'] = '1';
 			$_SESSION['role'] = 'Admin';
-			header('Location: dashboard.php');
+			header('Location: farmers_approvals.php');
 		} else {
 			// header('Location: index.php');
 			?>
