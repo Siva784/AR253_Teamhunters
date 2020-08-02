@@ -10,28 +10,29 @@
 					</a>
 				</li>
 
+				<li>
+					<a class="nav-link" href="purchased_jute.php">
+						<i class="fa fa-home" aria-hidden="true"></i>
+						<span>Purchased Jute</span>
+					</a>
+				</li>
+
 				<li class="nav-parent">
 					<a class="nav-link" href="#">
 						<i class="fas fa-certificate" aria-hidden="true"></i>
-						<span>Crop</span>
+						<span>Mill Workers</span>
 					</a>
 					<ul class="nav nav-children">
 						<li>
-							<a class="nav-link" href="crop-add.php">
+							<a class="nav-link" href="worker-add.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
-								Add Crop
+								Add Mill Workers
 							</a>
 						</li>
 						<li>
-							<a class="nav-link" href="crop-invest.php">
+							<a class="nav-link" href="workers-view.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
-								Add Investments
-							</a>
-						</li>
-						<li>
-							<a class="nav-link" href="crop-sell.php">
-								<i class="fas fa-money " aria-hidden="true"></i>
-								Sell Crop
+								View Mill Workers
 							</a>
 						</li>
 					</ul>
