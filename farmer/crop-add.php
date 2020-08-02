@@ -203,7 +203,7 @@
             $.ajax({
                 url: 'queries/crop.php',
                 type: 'post',
-                dataType: 'text',
+                dataType: 'text' ,
                 data: {
                     start_date: start_date,
                     end_date: end_date,
