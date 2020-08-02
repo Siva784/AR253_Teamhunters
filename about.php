@@ -8,7 +8,7 @@ include_once('header.php');
 <div class="colorlib-loader"></div>
 	
 	<div id="page">
-	<aside id="colorlib-hero" class="js-fullheight">
+	<aside id="colorlib-hero" class="js-fullheight" >
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
 		   	<li style="background-image: url(images/1.jpg);">
