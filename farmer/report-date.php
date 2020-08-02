@@ -68,12 +68,125 @@
 				</header>
 				<!-- start: page -->
 				<div class="row">
-					<div class="col-xl-6">
+					<div class="col-lg">
 						<section class="card">
 
+							<header class="card-header">
+								<h2 class="card-title">Crop Sold Details</h2>
+							</header>
+							<div class="card-body">
+								<form action="report-date.php" method="post">
+									<div class="form-row">
+										<div class="col-lg-4">
+											<label class="control-label pt-2" for="inputDefault">From Date<span class="required">*</span></label>
+											<div class="col-lg">
+												<input type="date" class="form-control" id="start_date" name="sdate" value=''>
+												<div id="name_err" style="color:red"></div>
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<label class="control-label pt-2" for="inputDefault">To Date<span class="required">*</span></label>
+											<div class="col-lg">
+												<input type="date" class="form-control" id="start_date" value='' name='edate'>
+												<div id="name_err" style="color:red"></div>
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<label class="control-label pt-2" for="inputDefault">Submit</label>
+											<div class="col-lg">
+												<input type="submit" class="btn btn-primary" value='Get Report'>
+												<div id="name_err" style="color:red"></div>
+											</div>
+										</div>
+									</div>
+								</form>
 
-							<!-- end: page -->
+							</div>
 						</section>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg">
+						<?php
+
+						if (isset($_POST['sdate'])) {
+							$sdate = $_POST['sdate'];
+							$edate = $_POST['edate'];
+							$crops = "SELECT * from crops where far_id = {$_SESSION['far_id']}";
+							$crops = mysqli_query($conn, $crops);
+
+						?>
+							<section class="card">
+
+								<header class="card-header">
+									<h2 class="card-title">Crop Sold Details</h2>
+								</header>
+
+
+
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered table-striped mb-0" id="datatable-tabletools" id="datatable-details">
+											<thead>
+												<th>CropId</th>
+												<th>Crop Start</th>
+												<th>Crop End</th>
+												<th>Acers</th>
+												<th>Total Income</th>
+												<th>Total Investment</th>
+												<th>Sold Price</th>
+												<th>Net Profit/Loss</th>
+											</thead>
+											<tbody>
+												<?php
+												while ($crop = mysqli_fetch_assoc($crops)) {
+													$crop_details = "SELECT * from crops where crop_id={$crop['crop_id']}";
+													$crop_details = mysqli_query($conn, $crop_details);
+													$crop_details = mysqli_fetch_assoc($crop_details);
+
+													$crop_investment = "SELECT sum(invest_amt) as invest_amt from crop_investment where crop_id={$crop['crop_id']}";
+													$crop_investment = mysqli_query($conn, $crop_investment);
+													$crop_investment = mysqli_fetch_assoc($crop_investment);
+
+													$crop_income = "SELECT sum(income_amt) as income_amt from income_source where crop_id={$crop['crop_id']}";
+													$crop_income = mysqli_query($conn, $crop_income);
+													$crop_income = mysqli_fetch_assoc($crop_income);
+
+													$sell = "SELECT sum(sell_price) as sell_price from sold_mill where crop_id={$crop['crop_id']}";
+													$sell = mysqli_query($conn, $sell);
+													$sell = mysqli_fetch_assoc($sell);
+
+													$sum = $sell['sell_price']-$crop_investment['invest_amt'];
+													$color = "";
+													if($sum > 0){
+														$color='green';	
+													}else{
+														$sum=$sum*-1;
+														$color='red';
+													}
+												?>
+													<tr>
+														<td><?php echo $crop['crop_id'] ?></td>
+														<td><?php echo $crop['crop_start']; ?></td>
+														<td><?php echo $crop['crop_end']; ?></td>
+														<td><?php echo $crop['crop_acers']; ?></td>
+														<td><?php echo $crop_income['income_amt']; ?></td>
+														<td><?php echo $crop_investment['invest_amt']; ?></td>
+														<td><?php echo $sell['sell_price']; ?></td>
+														<td style="color: <?php echo $color; ?>;"><?php echo $sum; ?></td>
+
+													</tr>
+												<?php } ?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- end: page -->
+							</section>
+						<?php
+						}
+						?>
 					</div>
 			</section>
 		</div>
@@ -115,6 +228,12 @@
 	<script src="vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
 	<script src="vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
 	<script src="vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
+
+	<script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+	<script src="js/examples/examples.datatables.default.js"></script>
+	<script src="js/examples/examples.datatables.row.with.details.js"></script>
+	<script src="js/examples/examples.datatables.tabletools.js"></script>
 
 	<!-- Theme Base, Components and Settings -->
 	<script src="js/theme.js"></script>
