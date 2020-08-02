@@ -15,9 +15,14 @@ if (isset($_POST['mill_register'])) {
 	$millname = $_POST['millname'];
 	$phnum = $_POST['mphnum'];
 	$mpassword = $_POST['mpassword'];
+	$filename = $_FILES['file']['name'];
+	$location = "uploads/mill/" . $filename;
+
+	move_uploaded_file($_FILES['file']['tmp_name'], $location);
 
 
-	$query = "INSERT INTO `mills`(`name`, `phnum`, mill_name, `passwd`, `adhaar`, `state`, `district`) VALUES ('$mname','$phnum','$millname','$mpassword','$ad_no','$mstate','$district')";
+
+	$query = "INSERT INTO `mills`(`name`, `phnum`, mill_name, `passwd`, `adhaar`, `state`, `district`,document) VALUES ('$mname','$phnum','$millname','$mpassword','$ad_no','$mstate','$district','$filename')";
 	// echo $query;
 	$q = mysqli_query($conn, $query);
 	if ($q) {
@@ -50,7 +55,7 @@ if (isset($_POST['mill_register'])) {
 								<div>
 									<div class="col-md-6 animate-box">
 
-										<form action="mo-signup.php" method='post'>
+										<form action="mo-signup.php" method='post' enctype="multipart/form-data">
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="maadhar">Aadhar Number </label>
@@ -71,6 +76,13 @@ if (isset($_POST['mill_register'])) {
 													<input type="text" id="mphnum" class="form-control" placeholder="Your firstname" name="mphnum">
 												</div>
 
+											</div>
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="fstate">Document</label>
+													<input type="file" name='file' id='file'>
+
+												</div>
 											</div>
 
 

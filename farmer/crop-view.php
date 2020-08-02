@@ -105,7 +105,7 @@
 													<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
 													<input type="submit" value="Add Investments" class="btn btn-primary">
 												</form></td>
-												<td><form action="crop-sell" method="post">
+												<td><form action="crop-sell.php" method="post">
 													<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
 													<input type="submit" value="Sell Crop" class="btn btn-primary">
 												</form></td>

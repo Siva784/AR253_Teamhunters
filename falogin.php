@@ -6,7 +6,7 @@ include 'queries/connect.php';
 ?>
 <?php
 if (isset($_POST['phnum']) && isset($_POST['passwd'])) {
-	$check = "SELECT * from `farmers` where far_phnum=" . '"' . $_POST['phnum'] . '"';
+	$check = "SELECT * from `farmers` where far_phnum='{$_POST['phnum']}' && status=1";
 	// echo $check;
 	$check = mysqli_query($conn, $check);
 	$login_row = mysqli_fetch_assoc($check);

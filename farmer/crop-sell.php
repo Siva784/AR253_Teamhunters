@@ -128,8 +128,6 @@
 												?>
 													<option value="<?php echo $mill['mill_id']; ?>"><?php echo $mill['mill_name'] . "(" . $mill['district'] . ")"; ?></option>
 												<?php } ?>
-												<option value="10">Sai Ram Jute Mill(Eluru)</option>
-												<option value="11">Andhra Pradesh Fibers(Vijayanagaram)</option>
 											</select>
 											<div id="name_err" style="color:red"></div>
 										</div>

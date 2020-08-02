@@ -5,7 +5,7 @@ include_once('header.php');
 include 'queries/connect.php';
 ?>
 <?php
-$msg="";
+$msg = "";
 if (isset($_POST['far_register'])) {
 	$ad_no = $_POST['faadharno'];
 	$fname = $_POST['fname'];
@@ -14,13 +14,17 @@ if (isset($_POST['far_register'])) {
 	$faddress = $_POST['faddress'];
 	$phnum = $_POST['phnum'];
 	$fpassword = $_POST['fpassword'];
+	$filename = $_FILES['file']['name'];
+	$location = "uploads/farmer/" . $filename;
 
-	$query = "INSERT INTO `farmers`(`far_name`, `far_phnum`, `far_passwd`, `far_adhaar`, `far_state`, `far_village`, `far_address`) VALUES ('$fname','$phnum','$fpassword','$ad_no','$fstate','$fvillage','$faddress')";
+	move_uploaded_file($_FILES['file']['tmp_name'], $location);
+
+	$query = "INSERT INTO `farmers`(`far_name`, `far_phnum`, `far_passwd`, `far_adhaar`, `far_state`, `far_village`, `far_address`,document) VALUES ('$fname','$phnum','$fpassword','$ad_no','$fstate','$fvillage','$faddress','$filename')";
 	$q = mysqli_query($conn, $query);
 	if ($q) {
-		$msg="Farmer Registered";
-	}else{
-		$msg="Farmer Not Registered";
+		$msg = "Farmer Registered";
+	} else {
+		$msg = "Farmer Not Registered";
 	}
 }
 ?>
@@ -48,7 +52,7 @@ if (isset($_POST['far_register'])) {
 									<div class="col-md-6 col-md-push animate-box">
 
 										<h3>SIGN UP</h3>
-										<form action="farmer-signup.php" method='post'>
+										<form action="farmer-signup.php" method='post' enctype="multipart/form-data">
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="faadharno">Aadhar Number</label>
@@ -72,6 +76,14 @@ if (isset($_POST['far_register'])) {
 														<option value="Tamil Nadu">Tamil Nadu</option>
 														<option value="West Bengal">West Bengal</option>
 													</select>
+
+												</div>
+											</div>
+
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="fstate">Document</label>
+													<input type="file" name='file' id='file'>
 
 												</div>
 											</div>
