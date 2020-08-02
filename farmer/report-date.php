@@ -157,13 +157,13 @@
 													$sell = mysqli_query($conn, $sell);
 													$sell = mysqli_fetch_assoc($sell);
 
-													$sum = $sell['sell_price']-$crop_investment['invest_amt'];
+													$sum = $sell['sell_price'] - $crop_investment['invest_amt'];
 													$color = "";
-													if($sum > 0){
-														$color='green';	
-													}else{
-														$sum=$sum*-1;
-														$color='red';
+													if ($sum > 0) {
+														$color = 'green';
+													} else {
+														$sum = $sum * -1;
+														$color = 'red';
 													}
 												?>
 													<tr>
@@ -184,6 +184,90 @@
 								</div>
 								<!-- end: page -->
 							</section>
+							<br>
+							<div class="row ">
+								<div class="col-lg-6">
+									<section class="card">
+										<header class="card-header">
+
+											<h2 class="card-title">Amount Spent for Investments</h2>
+											<p class="card-subtitle"></p>
+										</header>
+										<div class="card-body">
+
+											<!-- Flot: Pie -->
+											<div class="chart chart-md" id="flotPie"></div>
+											<?php
+											$invest_re = "SELECT invest_reason,sum(invest_amt) as amt FROM `crop_investment` WHERE farmer_id=8 group by invest_reason";
+											$invest_re = mysqli_query($conn, $invest_re);
+
+											?>
+											<script type="text/javascript">
+												var flotPieData = [
+													<?php
+													$x = 0;
+													$color = array("#0088cc", "#2baab1", "#734ba9", "#E36159", "blue");
+													while ($q1 = mysqli_fetch_assoc($invest_re)) {
+													?> {
+															label: "<?php echo $q1['invest_reason'] . "(" . $q1['amt'] . ")";; ?>",
+															data: [
+																[<?php echo $x; ?>, <?php echo $q1['amt']; ?>]
+															],
+															color: '<?php echo $color[$x++]; ?>'
+														},
+													<?php } ?>
+												];
+
+												// See: js/examples/examples.charts.js for more settings.
+											</script>
+
+										</div>
+									</section>
+								</div>
+
+								<div class="col-lg-6">
+									<section class="card">
+										<header class="card-header">
+											<div class="card-actions">
+												<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+												<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+											</div>
+
+											<h2 class="card-title">Investments and Profits</h2>
+											<p class="card-subtitle"></p>
+										</header>
+										<div class="card-body">
+
+											<div class="chart chart-md" id="morrisArea"></div>
+											<script type="text/javascript">
+												var morrisAreaData = [
+													<?php
+													$crop_g = "SELECT * from crops where far_id = {$_SESSION['far_id']}";
+													$crop_g = mysqli_query($conn, $crop_g);
+													while ($c = mysqli_fetch_assoc($crop_g)) {
+														$i = "select sum(invest_amt) as amt from crop_investment where crop_id={$c['crop_id']}";
+														$i = mysqli_query($conn, $i);
+														$i = mysqli_fetch_assoc($i);
+
+														$se = "SELECT sum(sell_price) as amt from sold_mill where crop_id = {$c['crop_id']}";
+														$se = mysqli_query($conn, $se);
+														$se = mysqli_fetch_assoc($se);
+													?> {
+															y: "<?php echo $c['crop_start'] . " to " . $c['crop_end'];  ?>",
+															a: <?php echo $i['amt']; ?>,
+															b: <?php echo $se['amt'] - $i['amt']; ?>
+														},
+													<?php } ?>
+
+												];
+
+												// See: js/examples/examples.charts.js for more settings.
+											</script>
+
+										</div>
+									</section>
+								</div>
+							</div>
 						<?php
 						}
 						?>
@@ -246,6 +330,8 @@
 
 	<!-- Examples -->
 	<script src="js/examples/examples.dashboard.js"></script>
+	<script src="js/examples/examples.charts.js"></script>
+
 
 </body>
 
