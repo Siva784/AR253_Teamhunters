@@ -39,8 +39,30 @@
 						<li>
 							<a class="nav-link" href="users-daterange-view.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
-								Date Range
+								With in Date Range
 							</a>
+						</li>
+						<li class="nav-parent">
+							
+							<a class="nav-link" href="#">
+								
+								<span>All Users</span>
+							</a>
+							<ul class="nav nav-children">
+								<li>
+									<a class="nav-link" href="allfarmers-view.php">
+										<i class="fa fa-plus" aria-hidden="true"></i>
+										Farmers
+									</a>
+								</li>
+								<li>
+									<a class="nav-link" href="allmills-view.php">
+										<i class="fa fa-plus" aria-hidden="true"></i>
+										Mill Owners
+									</a>
+								</li>
+							</ul>
+							
 						</li>
 						
 					</ul>
