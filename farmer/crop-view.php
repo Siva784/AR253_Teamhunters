@@ -86,6 +86,7 @@
 										<th>Area (In Acres)</th>
 										<th>Crop Type</th>
 										<th>Crop Investment</th>
+										<th>Add Income Source</th>
 										<th>Sell Crop</th>
 										<th>Delete Crop</th>
 									</thead>
@@ -101,18 +102,28 @@
 												<td><?php echo $crop['crop_address']; ?></td>
 												<td><?php echo $crop['crop_acers']; ?></td>
 												<td><?php echo $crop['crop_type']; ?></td>
-												<td><form action="crop-invest.php" method="post">
-													<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
-													<input type="submit" value="Add Investments" class="btn btn-primary">
-												</form></td>
-												<td><form action="crop-sell.php" method="post">
-													<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
-													<input type="submit" value="Sell Crop" class="btn btn-primary">
-												</form></td>
+												<td>
+													<form action="crop-invest.php" method="post">
+														<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
+														<input type="submit" value="Add Investments" class="btn btn-primary">
+													</form>
+												</td>
+												<td>
+													<form action="income-source.php" method="post">
+														<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
+														<input type="submit" value="Add Income Source" class="btn btn-primary">
+													</form>
+												</td>
+												<td>
+													<form action="crop-sell.php" method="post">
+														<input type="hidden" name="crop_id" id="crop_id" value="<?php echo $crop['crop_id']; ?>">
+														<input type="submit" value="Sell Crop" class="btn btn-primary">
+													</form>
+												</td>
 												<td>
 													<input type="submit" value="Delete" class="btn btn-primary">
 												</td>
-												</tr>
+											</tr>
 										<?php } ?>
 									</tbody>
 								</table>

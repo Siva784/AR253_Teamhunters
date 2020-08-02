@@ -47,6 +47,22 @@ if (isset($_POST['sell_crop'])) {
     }
 }
 
+if (isset($_POST['income_add'])) {
+    $crop_id = $_POST['crop_id'];
+    $income_amt = $_POST['income_amt'];
+    
+    $income_source = $_POST['income_source'];
+    $income_date = $_POST['date'];
+    $sold = "INSERT INTO `income_source`(crop_id,`far_id`, `income_source`, `income_amt`,income_date) VALUES ($crop_id,{$_SESSION['far_id']}, '$income_source', '$income_amt','$income_date')";
+    echo $sold;
+    $sold = mysqli_query($conn, $sold);
+    if ($sold) {
+        echo "Income Added Successfully";
+    } else {
+        echo "Income Not Added";
+    }
+}
+
 
 
 ?>
