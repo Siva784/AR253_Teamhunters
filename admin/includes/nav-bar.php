@@ -30,6 +30,21 @@
 						</li>
 					</ul>
 				</li>
+				<li class="nav-parent">
+					<a class="nav-link" href="#">
+						<i class="fas fa-certificate" aria-hidden="true"></i>
+						<span>Registered Users</span>
+					</a>
+					<ul class="nav nav-children">
+						<li>
+							<a class="nav-link" href="users-daterange-view.php">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+								Date Range
+							</a>
+						</li>
+						
+					</ul>
+				</li>
 
 				
 				<li>
