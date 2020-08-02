@@ -78,7 +78,7 @@
 							<li><a href="about.php">ABOUT</a></li>
 							<li><a href="training.php">TRAINING</a></li>
 							<li class="has-dropdown">
-								<a href="blog.html">Login</a>
+								<a href="#">Login</a>
 								<ul class="dropdown">
 									<li><a href="mologin.php">Mill Owner</a></li>
 									<li><a href="falogin.php">Farmer</a></li>

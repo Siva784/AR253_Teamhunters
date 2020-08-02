@@ -30,6 +30,7 @@
 						</li>
 					</ul>
 				</li>
+				
 
 				<li class="nav-parent">
 					<a class="nav-link" href="#">
@@ -51,12 +52,27 @@
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a class="nav-link" href="farmer-training.php">
-						<i class="fa fa-home" aria-hidden="true"></i>
-						<span>training</span>
+				<li class="nav-parent">
+					<a class="nav-link" href="#">
+						<i class="fas fa-certificate" aria-hidden="true"></i>
+						<span>Training</span>
 					</a>
+					<ul class="nav nav-children">
+						<li>
+							<a class="nav-link" href="fa-tutorial-training.php">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+								Tutorial Training
+							</a>
+						</li>
+						<li>
+							<a class="nav-link" href="farmer-training.php">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+								Video Training
+							</a>
+						</li>
+					</ul>
 				</li>
+				
 				<li>
 					<a class="nav-link" href="<?php echo $_SERVER['PHP_SELF'] . "?lo"; ?>">
 						<i class="fa fa-power-off" aria-hidden="true"></i>

@@ -45,7 +45,12 @@
 						
 					</ul>
 				</li>
-
+				<li>
+					<a class="nav-link" href="training-upload.php">
+						<i class="fa fa-home" aria-hidden="true"></i>
+						<span>Training Videos</span>
+					</a>
+				</li>
 				
 				<li>
 					<a class="nav-link" href="<?php echo $_SERVER['PHP_SELF'] . "?lo"; ?>">

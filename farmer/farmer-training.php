@@ -99,6 +99,10 @@
 					</div>
 				</div>
 				<!-- end: page -->
+				<?php
+				 if(isset($_POST['submit']))
+				 {
+				?>
 				</section>
 				<section role="main" class="content-body">
 				<div class="row">
@@ -106,9 +110,9 @@
 				<section class="card">
 							
 				<div class="card-body">
+					<div class="row">
                 <?php
-                if(isset($_POST['submit']))
-                {
+               
                     $category="farmers";
                     $language=$_POST['language'];
                     
@@ -119,27 +123,24 @@
                         
                         ?>
                         <div class="col-md-6 animate-box">
-						<div class="row">
-						<?php echo "<h2>".$row[2]."</h2>";  ?>
-                        </div>
-						<div class="row">
-						<?php echo $row[3];  ?>
+							<div class="row">
+								<?php echo "<h2>".$row[2]."</h2>";  ?>
+                        	</div>
+							<div class="row">
+								<?php echo $row[3];  ?>
                         
-                        </div>
-                        <div class="row">
-						<u><h4>category </u> :<?php echo "<h4>".$row[1]."</h4>";  ?></h4> &nbsp&nbsp&nbsp<u> <h4>Language </u>: <?php echo "<h4>".$row[4]."</h4>";  ?></h4>
-                        </div>
+                        	</div>
+							<div class="row">
+								<u><h4>category </u> :<?php echo "<h4>".$row[1]."</h4>";  ?></h4> &nbsp&nbsp&nbsp<u> <h4>Language </u>: <?php echo "<h4>".$row[4]."</h4>";  ?></h4>
+							</div>
                         
 						
                         </div>
                     <?php
                     
                     }
-
-                }
-                
-                ?>
-					
+					 ?>
+					</div>
 				</div>
 
 			</div>
@@ -149,6 +150,9 @@
 			
 			</div>
 			</section>
+			<?php
+				 }
+			?>
 		</div>
 		</div>
 		</section>

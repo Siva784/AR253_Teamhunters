@@ -41,13 +41,13 @@
 				<li class="nav-parent">
 					<a class="nav-link" href="#">
 						<i class="fas fa-calculator" aria-hidden="true"></i>
-						<span>Income Reports</span>
+						<span>Reports</span>
 					</a>
 					<ul class="nav nav-children">
 						<li>
-							<a class="nav-link" href="report-crop.php">
+							<a class="nav-link" href="report-wages.php">
 								<i class="fa fa-calculator" aria-hidden="true"></i>
-								Crop Report
+								Wages Report
 							</a>
 						</li>
 						<li>

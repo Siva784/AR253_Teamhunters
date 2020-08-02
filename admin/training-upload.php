@@ -4,7 +4,10 @@
 <head>
 	<?php
 	include_once 'includes/head.php';
+
 	?>
+
+
 	<!-- Web Fonts  -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
@@ -38,20 +41,10 @@
 </head>
 
 <body>
-	<section class="body">
+<section class="body">
 
 		<!-- start: header -->
 		<?php include_once 'includes/header.php'; ?>
-
-		<?php
-		$wages = "SELECT * FROM `worker_wages` WHERE wor_id={$_POST['wor_id']} order by wage_date DESC";
-		$wages = mysqli_query($conn, $wages);
-
-		$worker = "SELECT * FROM `workers` WHERE crop_id={$_POST['wor_id']}";
-		$worker = mysqli_query($conn, $worker);
-		$worker = mysqli_fetch_assoc($worker);
-
-		?>
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
@@ -72,113 +65,72 @@
 			</aside>
 			<!-- end: sidebar -->
 
-			<section role="main" class="content-body">
-				<header class="page-header">
-					<h2>Workers</h2>
-				</header>
-				<!-- start: page -->
-				<div class="row">
-					<div class="col">
-						<section class="card">
-							<header class="card-header">
-								<h2 class="card-title">Add Wages</h2>
-							</header>
-							<div class="card-body">
-								<table style="text-align:left" class="table" border=1>
-									<tr>
-										<td>Worker Joining Date</td>
-										<td><?php echo $worker['wor_join']; ?></td>
-									</tr>
-									<tr>
-										<td>Worker Name</td>
-										<td><?php echo $worker['wor_name']; ?></td>
-									</tr>
-									<tr>
-										<td>Phone Number</td>
-										<td><?php echo $worker['wor_phno']; ?></td>
-									</tr>
-									<tr>
-										<td>Type of Worker</td>
-										<td><?php echo $worker['wor_type']; ?></td>
-									</tr>
-								</table>
-								<div class="form-group row">
-									<div class="col-lg-6">
-										<label class="control-label pt-2" for="inputDefault">Type of Wage<span class="required">*</span></label>
-										<div class="col-lg">
-											<select name="" id="wage_type" class='form-control'>
-												<option value="Monthly">Monthly wage</option>
-												<option value="Daily">Daily Wage</option>
-												
-											</select>
-											<div id="name_err" style="color:red"></div>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<label class="control-label pt-2" for="inputDefault">Amount In Rupees<span class="required">*</span></label>
-										<div class="col-lg">
-											<input type="text" class="form-control" id="wage_amt" value=''>
-											<div id="name_err" style="color:red"></div>
-										</div>
-									</div>
-									<div class="col-lg-3">
-										<label class="control-label pt-2" for="inputDefault">Date<span class="required">*</span></label>
-										<div class="col-lg">
-											<input type="date" class="form-control" id="invest_date" value=''>
-											<div id="name_err" style="color:red"></div>
-										</div>
-									</div>
-
-								</div>
 
 
-								<hr>
-								<div class="form-group row">
-									<div class="col-lg" style="text-align:center">
-										<button class='btn btn-primary' id='add' onclick='add();'>Add Wages</button>
 
-									</div>
-									<input type="hidden" value="<?php if (isset($_POST['fac_id'])) {
-																	echo $_POST['fac_id'];
-																} ?>" id='fac_id'>
-								</div>
-							</div>
-							<div class="card-body">
 
-								<table class="table table-bordered table-striped mb-0" id="datatable-default">
-									<thead>
-										<th>Type of Wage</th>
-										<th>Amount</th>
-										<th>Date</th>
-									</thead>
-									<tbody>
-										<?php
-										$sum=0;
-										while ($wage = mysqli_fetch_assoc($wages)) {
-										?>
-											<tr>
-												
-												<td><?php $sum = $sum + $wage['wage_amt'];echo $wage['wage_type']; ?></td>
-												<td><?php echo $wage['wage_date']; ?></td>
-												<td><?php echo $wage['wage_amt']; ?></td>
-											</tr>
-										<?php } ?>
-										<tr>
-											<td colspan="2" style="text-align: right;">Total Amount</td>
-											<td ><?php echo "$sum"; ?></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</section>
-					</div>
-				</div>
 
-				<!-- end: page -->
-			</section>
-		</div>
-	</section>
 
+
+<section class="body">
+            <h2 class="card-title">Training Content Details</h2>
+            <div class="card-body">
+                <form class="form-horizontal form-bordered" method="GET" action="training.php">
+                    
+                    <div class="form-group row">
+                        <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Category</label>
+                        <div class="col-lg-2">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="category" id="farmers" value="farmers" checked="">
+                                    Farmer
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="category" id="millowners" value="millowners">
+                                    Mill Owner
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Title</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="title"  name="title">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Link</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="link" name="link">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 control-label text-lg-right pt-2">Language</label>
+                        <div class="col-lg-2">
+                            <select class="form-control mb-3" name="language" id="language">
+                                <option value="telugu">Telugu</option>
+                                <option value="english">English</option>
+                                <option value="hindi">Hindi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault"></label>
+                        <div class="col-lg-2">
+                            <input type="submit" class="button" name="submit" id="submit" value="Submit">
+                        </div>
+                    </div>
+                    
+                    </form>
+                
+            </div>
+        </header>
+
+		</section>
+</div>
+</section>
 	<!-- Vendor -->
 	<script src="vendor/jquery/jquery.js"></script>
 	<script src="vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -223,34 +175,24 @@
 	<!-- Theme Custom -->
 	<script src="js/custom.js"></script>
 
+	<!-- datatable js -->
+	<script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+	<script src="js/examples/examples.datatables.default.js"></script>
+	<script src="js/examples/examples.datatables.row.with.details.js"></script>
+	<script src="js/examples/examples.datatables.tabletools.js"></script>
+
 	<!-- Theme Initialization Files -->
 	<script src="js/theme.init.js"></script>
 
 	<!-- Examples -->
 	<script src="js/examples/examples.dashboard.js"></script>
 	<script>
-		function add() {
-			var wage_type = $('#wage_type').val();
-			var wage_amt = $('#wage_amt').val();
-			var wage_date = $('#wage_date').val();
-
-			$.ajax({
-				url: 'queries/workers.php',
-				type: 'post',
-				dataType: 'text',
-				data: {
-					wage_type: wage_type,
-					wage_amt: wage_amt,
-					wage_date: wage_date,
-					wor_id: '<?php echo $_POST['wor_id']; ?>',
-					add_wage: '',
-
-				},
-				success: function(data) {
-					alert(data);
-					window.location = "workers-list.php";
-				}
-			});
+		function del(id) {
+			if (confirm("Confirm to Delete")) {
+				getrequest("queries/faculty.php", "fac_id=" + id + "&del_fac=''", "fac-view.php");
+				// location.reload();
+			}
 		}
 	</script>
 </body>
