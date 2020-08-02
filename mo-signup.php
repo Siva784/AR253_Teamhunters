@@ -50,7 +50,7 @@ if (isset($_POST['mill_register'])) {
 							?>
 						</div>
 						<div class="col-md-12 animate-box">
-							<h3>Mill Worker Signup Form</h3>
+							<h3>Mill Owners Signup Form</h3>
 							<div>
 								<div>
 									<div class="col-md-6 animate-box">
