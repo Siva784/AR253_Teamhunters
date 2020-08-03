@@ -123,23 +123,23 @@
                                         <tbody >
                                             <tr>
                                                 <td>Total Income </td>
-                                                <td><?php echo $crop_income['income_amt']; ?></td>
+                                                <td><?php echo "Rs ".$crop_income['income_amt']."/-"; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Total Investment </td>
-                                                <td><?php echo $crop_investment['invest_amt']; ?></td>
+                                                <td><?php echo "Rs ".$crop_investment['invest_amt']."/-"; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Crop Sold For Price </td>
-                                                <td><?php echo $sell['sell_price']; ?></td>
+                                                <td><?php echo "Rs ".$sell['sell_price']."/-"; ?></td>
                                             </tr>
                                             <tr style="font-size:30px;text-align: center;color:<?php if($sum>0) { echo 'green';} else{echo 'red';} ?>" colspan=2>
                                                 <td colspan="2">
                                                     <?php 
                                                         if($sum >0){
-                                                            echo "Profit :".$sum;
+                                                            echo "Profit : Rs ".$sum."/-";
                                                         }else{
-                                                            echo "Loss :".($sum*-1);
+                                                            echo "Loss : Rs ".($sum*-1)/"/-";
                                                         }
                                                     ?>
                                                 </td>
