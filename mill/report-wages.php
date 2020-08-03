@@ -120,7 +120,7 @@
                             <section class="card">
 
                                 <header class="card-header">
-                                    <h2 class="card-title">Crop Sold Details</h2>
+                                    <h2 class="card-title">Wages Details</h2>
                                 </header>
 
 
