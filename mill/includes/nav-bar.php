@@ -100,6 +100,13 @@
 					</ul>
 				</li>
 				<li>
+					<a class="nav-link" href="mill-predictions.php">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						<span>Mill Investment Prections</span>
+					</a>
+				</li>
+				
+				<li>
 					<a class="nav-link" href="<?php echo $_SERVER['PHP_SELF'] . "?lo"; ?>">
 						<i class="fa fa-power-off" aria-hidden="true"></i>
 						<span>LogOut</span>
