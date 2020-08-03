@@ -94,7 +94,7 @@
 										<div class="col-lg-4">
 											<label class="control-label pt-2" for="inputDefault">Submit</label>
 											<div class="col-lg">
-												<input type="submit" class="btn btn-primary" value='Get Report'>
+												<input type="button" class="btn btn-primary" value='Get Report' onclick="show()">
 												<div id="name_err" style="color:red"></div>
 											</div>
 										</div>
@@ -105,380 +105,372 @@
 						</section>
 					</div>
 				</div>
+				<br>
+				<div id="report">
 
-				<div class="row">
-					<div class="col-lg-6">
-					<!--	<h4 class="mb-0 mt-2">Circular Charts</h4>
-						<p class="mb-3">Easy pie chart is a jQuery plugin that uses the canvas element to render simple pie charts for single values.</p>
-					-->
-						<div class="row">
-							<div class="col-md-12">
-								<section class="card">
-									<header class="card-header">
-										<div class="card-actions">
-											<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-											<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-										</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<!--	<h4 class="mb-0 mt-2">Circular Charts</h4>
+							<p class="mb-3">Easy pie chart is a jQuery plugin that uses the canvas element to render simple pie charts for single values.</p>
+						-->
+							<div class="row">
+								<div class="col-md-12">
+									<section class="card">
+										<header class="card-header">
+											<div class="card-actions">
+												<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+												<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+											</div>
 
-										<h2 class="card-title">Current Status</h2>
-										<p class="card-subtitle"></p>
-									</header>
-									<div class="card-body">
-										<div class="row text-center">
-											<div class="col-lg-6">
-												<div class="circular-bar">
-													<div class="circular-bar-chart" data-percent="85" data-plugin-options='{ "barColor": "#0088CC", "delay": 300 }'>
-														<strong>Jute Purchased</strong>
-														<label><span class="percent">85</span>%</label>
+											<h2 class="card-title">Current Status</h2>
+											<p class="card-subtitle"></p>
+										</header>
+										<div class="card-body">
+											<div class="row text-center">
+												<div class="col-lg-6">
+													<div class="circular-bar">
+														<div class="circular-bar-chart" data-percent="73" data-plugin-options='{ "barColor": "#0088CC", "delay": 300 }'>
+															<strong>Jute Purchased</strong>
+															<label><span class="percent">63</span>%</label>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="circular-bar">
+														<div class="circular-bar-chart" data-percent="27" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 600 }'>
+															<strong>Jute Remained</strong>
+															<label><span class="percent">37</span>%</label>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-6">
-												<div class="circular-bar">
-													<div class="circular-bar-chart" data-percent="30" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 600 }'>
-														<strong>Jute Remained</strong>
-														<label><span class="percent">30</span>%</label>
-													</div>
-												</div>
-											</div>
 										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<section class="card">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
 									</div>
-								</section>
-							</div>
-						</div>				
-					</div>
 
-					<div class="col-lg-6">
-						<section class="card">
-							<header class="card-header">
-								<div class="card-actions">
-									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									<h2 class="card-title">Production of Jute Goods</h2>
+									<p class="card-subtitle"></p>
+								</header>
+								<div class="card-body">
+
+									<!-- Flot: Pie -->
+									<div class="chart chart-md" id="flotPie"></div>
+									<script type="text/javascript">
+										var flotPieData = [{
+											label: "Hessian",
+											data: [
+												[1, 60]
+											],
+											color: '#0088cc'
+										}, {
+											label: "Sacking",
+											data: [
+												[1, 10]
+											],
+											color: '#2baab1'
+										}, {
+											label: "Yarn & Twine",
+											data: [
+												[1, 15]
+											],
+											color: '#734ba9'
+										}, {
+											label: "Canvas & Tarpaulin",
+											data: [
+												[1, 15]
+											],
+											color: '#E36159'
+										}];
+
+										// See: js/examples/examples.charts.js for more settings.
+									</script>
+
 								</div>
-
-								<h2 class="card-title">Production of Jute Goods</h2>
-								<p class="card-subtitle"></p>
-							</header>
-							<div class="card-body">
-
-								<!-- Flot: Pie -->
-								<div class="chart chart-md" id="flotPie"></div>
-								<script type="text/javascript">
-
-									var flotPieData = [{
-										label: "Hessian",
-										data: [
-											[1, 60]
-										],
-										color: '#0088cc'
-									}, {
-										label: "Sacking",
-										data: [
-											[1, 10]
-										],
-										color: '#2baab1'
-									}, {
-										label: "Yarn & Twine",
-										data: [
-											[1, 15]
-										],
-										color: '#734ba9'
-									}, {
-										label: "Canvas & Tarpaulin",
-										data: [
-											[1, 15]
-										],
-										color: '#E36159'
-									}];
-
-									// See: js/examples/examples.charts.js for more settings.
-
-								</script>
-
-							</div>
-						</section>
+							</section>
+						</div>
 					</div>
-				</div>	
-				
-				<div class="row">
-					<div class="col-md-12">
-						<section class="card">
-							<header class="card-header">
-								<div class="card-actions">
-									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+
+					<div class="row">
+						<div class="col-md-12">
+							<section class="card">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Revenue in Years</h2>
+									<p class="card-subtitle">Year-wise Revenue generation based on type of Jute.</p>
+								</header>
+								<div class="card-body">
+
+									<!-- Morris: Bar -->
+									<div class="chart chart-md" id="morrisBar"></div>
+									<script type="text/javascript">
+										var morrisBarData = [{
+											y: '2010',
+											a: 10,
+											b: 30
+										}, {
+											y: '2011',
+											a: 100,
+											b: 25
+										}, {
+											y: '2012',
+											a: 60,
+											b: 25
+										}, {
+											y: '2013',
+											a: 75,
+											b: 35
+										}, {
+											y: '2014',
+											a: 90,
+											b: 20
+										}, {
+											y: '2015',
+											a: 75,
+											b: 15
+										}, {
+											y: '2016',
+											a: 50,
+											b: 10
+										}, {
+											y: '2017',
+											a: 75,
+											b: 25
+										}, {
+											y: '2018',
+											a: 30,
+											b: 10
+										}, {
+											y: '2019',
+											a: 75,
+											b: 5
+										}, {
+											y: '2020',
+											a: 60,
+											b: 8
+										}];
+
+										// See: js/examples/examples.charts.js for more settings.
+									</script>
+
 								</div>
-
-								<h2 class="card-title">Revenue in Years</h2>
-								<p class="card-subtitle">Year-wise Revenue generation based on type of Jute.</p>
-							</header>
-							<div class="card-body">
-
-								<!-- Morris: Bar -->
-								<div class="chart chart-md" id="morrisBar"></div>
-								<script type="text/javascript">
-
-									var morrisBarData = [{
-										y: '2010',
-										a: 10,
-										b: 30
-									}, {
-										y: '2011',
-										a: 100,
-										b: 25
-									}, {
-										y: '2012',
-										a: 60,
-										b: 25
-									}, {
-										y: '2013',
-										a: 75,
-										b: 35
-									}, {
-										y: '2014',
-										a: 90,
-										b: 20
-									}, {
-										y: '2015',
-										a: 75,
-										b: 15
-									}, {
-										y: '2016',
-										a: 50,
-										b: 10
-									}, {
-										y: '2017',
-										a: 75,
-										b: 25
-									}, {
-										y: '2018',
-										a: 30,
-										b: 10
-									}, {
-										y: '2019',
-										a: 75,
-										b: 5
-									}, {
-										y: '2020',
-										a: 60,
-										b: 8
-									}];
-
-									// See: js/examples/examples.charts.js for more settings.
-
-								</script>
-
-							</div>
-						</section>
+							</section>
+						</div>
 					</div>
+
+					<div class="row">
+						<div class="col-lg-6">
+							<section class="card">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Workers Count</h2>
+									<p class="card-subtitle">Total Workers count in particular financial year.</p>
+								</header>
+								<div class="card-body">
+
+									<!-- Flot: Bars -->
+									<div class="chart chart-md" id="flotBars"></div>
+									<script type="text/javascript">
+										var flotBarsData = [
+											["2011", 22],
+											["2012", 20],
+											["2013", 25],
+											["2014", 23],
+											["2015", 37],
+											["2016", 36],
+											["2017", 38],
+											["2018", 54],
+											["2019", 40],
+											["2020", 50],
+										];
+
+										// See: js/examples/examples.charts.js for more settings.
+									</script>
+
+								</div>
+							</section>
+						</div>
+
+						<div class="col-lg-6">
+							<section class="card">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Present Workers Chart</h2>
+									<p class="card-subtitle">This chart classifies based on types of workers. </p>
+								</header>
+								<div class="card-body">
+
+									<!-- Morris: Donut -->
+									<div class="chart chart-md" id="morrisDonut"></div>
+									<script type="text/javascript">
+										var morrisDonutData = [{
+											label: "Permanent Workers",
+											value: 30
+										}, {
+											label: "Casual Workers",
+											value: 10
+										}, {
+											label: "Temporary Workers",
+											value: 20
+										}];
+
+										// See: js/examples/examples.charts.js for more settings.
+									</script>
+
+								</div>
+							</section>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<section class="card">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Profits</h2>
+									<p class="card-subtitle">Year-wise Profit analysis graph.</p>
+								</header>
+								<div class="card-body">
+
+									<!-- Morris: Line -->
+									<div class="chart chart-md" id="morrisLine"></div>
+									<script type="text/javascript">
+										var morrisLineData = [{
+											y: '2012',
+											a: 60,
+											b: 50
+										}, {
+											y: '2013',
+											a: 70,
+											b: 55
+										}, {
+											y: '2014',
+											a: 75,
+											b: 58
+										}, {
+											y: '2015',
+											a: 79,
+											b: 60
+										}, {
+											y: '2016',
+											a: 83,
+											b: 61
+										}, {
+											y: '2017',
+											a: 86,
+											b: 63
+										}, {
+											y: '2018',
+											a: 87,
+											b: 65
+										}, {
+											y: '2019',
+											a: 90,
+											b: 67
+										}, {
+											y: '2020',
+											a: 93,
+											b: 69
+										}];
+
+										// See: js/examples/examples.charts.js for more settings.
+									</script>
+
+								</div>
+							</section>
+						</div>
+
+						<div class="col-lg-6">
+							<section class="card">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+									</div>
+
+									<h2 class="card-title">Expenditure vs Income</h2>
+									<p class="card-subtitle"></p>
+								</header>
+								<div class="card-body">
+
+									<!-- Morris: Area -->
+									<div class="chart chart-md" id="morrisArea"></div>
+									<script type="text/javascript">
+										var morrisAreaData = [{
+											y: '2011',
+											a: 100,
+											b: 300
+										}, {
+											y: '2012',
+											a: 150,
+											b: 220
+										}, {
+											y: '2013',
+											a: 150,
+											b: 295
+										}, {
+											y: '2014',
+											a: 150,
+											b: 310
+										}, {
+											y: '2015',
+											a: 180,
+											b: 350
+										}, {
+											y: '2016',
+											a: 195,
+											b: 360
+										}, {
+											y: '2017',
+											a: 180,
+											b: 340
+										}, {
+											y: '2018',
+											a: 100,
+											b: 338
+										}, {
+											y: '2019',
+											a: 120,
+											b: 345
+										}, {
+											y: '2020',
+											a: 230,
+											b: 350
+										}];
+
+										// See: js/examples/examples.charts.js for more settings.
+									</script>
+
+								</div>
+							</section>
+						</div>
+					</div>
+
 				</div>
-
-				<div class="row">
-					<div class="col-lg-6">
-						<section class="card">
-							<header class="card-header">
-								<div class="card-actions">
-									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-								</div>
-
-								<h2 class="card-title">Workers Count</h2>
-								<p class="card-subtitle">Total Workers count in particular financial year.</p>
-							</header>
-							<div class="card-body">
-
-								<!-- Flot: Bars -->
-								<div class="chart chart-md" id="flotBars"></div>
-								<script type="text/javascript">
-
-									var flotBarsData = [
-										["2011", 22],
-										["2012", 20],
-										["2013", 25],
-										["2014", 23],
-										["2015", 37],
-										["2016", 36],
-										["2017", 38],
-										["2018", 54],
-										["2019", 40],
-										["2020", 50],
-									];
-
-									// See: js/examples/examples.charts.js for more settings.
-
-								</script>
-
-							</div>
-						</section>
-					</div>
-
-					<div class="col-lg-6">
-						<section class="card">
-							<header class="card-header">
-								<div class="card-actions">
-									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-								</div>
-
-								<h2 class="card-title">Present Workers Chart</h2>
-								<p class="card-subtitle">This chart classifies based on types of workers. </p>
-							</header>
-							<div class="card-body">
-
-								<!-- Morris: Donut -->
-								<div class="chart chart-md" id="morrisDonut"></div>
-								<script type="text/javascript">
-
-									var morrisDonutData = [{
-										label: "Permanent Workers",
-										value: 30
-									}, {
-										label: "Casual Workers",
-										value: 10
-									}, {
-										label: "Temporary Workers",
-										value: 20
-									}];
-
-									// See: js/examples/examples.charts.js for more settings.
-
-								</script>
-
-							</div>
-						</section>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-						<section class="card">
-							<header class="card-header">
-								<div class="card-actions">
-									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-								</div>
-
-								<h2 class="card-title">Profits</h2>
-								<p class="card-subtitle">Year-wise Profit analysis graph.</p>
-							</header>
-							<div class="card-body">
-
-								<!-- Morris: Line -->
-								<div class="chart chart-md" id="morrisLine"></div>
-								<script type="text/javascript">
-
-									var morrisLineData = [{
-										y: '2012',
-										a: 60,
-										b: 50
-									}, {
-										y: '2013',
-										a: 70,
-										b: 55
-									}, {
-										y: '2014',
-										a: 75,
-										b: 58
-									}, {
-										y: '2015',
-										a: 79,
-										b: 60
-									}, {
-										y: '2016',
-										a: 83,
-										b: 61
-									}, {
-										y: '2017',
-										a: 86,
-										b: 63
-									}, {
-										y: '2018',
-										a: 87,
-										b: 65
-									}, {
-										y: '2019',
-										a: 90,
-										b: 67
-									}, {
-										y: '2020',
-										a: 93,
-										b: 69
-									}];
-
-									// See: js/examples/examples.charts.js for more settings.
-
-								</script>
-
-							</div>
-						</section>
-					</div>
-
-					<div class="col-lg-6">
-						<section class="card">
-							<header class="card-header">
-								<div class="card-actions">
-									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-									<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-								</div>
-
-								<h2 class="card-title">Expenditure vs Income</h2>
-								<p class="card-subtitle"></p>
-							</header>
-							<div class="card-body">
-
-								<!-- Morris: Area -->
-								<div class="chart chart-md" id="morrisArea"></div>
-								<script type="text/javascript">
-
-									var morrisAreaData = [{
-										y: '2011',
-										a: 100,
-										b: 300
-									}, {
-										y: '2012',
-										a: 150,
-										b: 220
-									}, {
-										y: '2013',
-										a: 150,
-										b: 295
-									}, {
-										y: '2014',
-										a: 150,
-										b: 310
-									}, {
-										y: '2015',
-										a: 180,
-										b: 350
-									}, {
-										y: '2016',
-										a: 195,
-										b: 360
-									}, {
-										y: '2017',
-										a: 180,
-										b: 340
-									}, {
-										y: '2018',
-										a: 100,
-										b: 338
-									}, {
-										y: '2019',
-										a: 120,
-										b: 345
-									}, {
-										y: '2020',
-										a: 230,
-										b: 350
-									}];
-
-									// See: js/examples/examples.charts.js for more settings.
-
-								</script>
-
-							</div>
-						</section>
-					</div>
-				</div>	
 			</section>
 		</div>
 	</section>
@@ -538,7 +530,17 @@
 	<!-- Examples -->
 	<script src="js/examples/examples.dashboard.js"></script>
 	<script src="js/examples/examples.charts.js"></script>
+	<script>
+		$('#report').hide();
 
+		function show() {
+			$('#report').hide();
+			setTimeout(function() {
+				$('#report').show();
+			}, 2000);
+
+		}
+	</script>
 
 </body>
 

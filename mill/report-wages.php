@@ -113,7 +113,7 @@
                         if (isset($_POST['sdate'])) {
                             $sdate = $_POST['sdate'];
                             $edate = $_POST['edate'];
-                            $wages = "SELECT w.date,m.name,m.phnum,m.type,m.joining_date,w.amt FROM `worker_wages` w,mill_workers m WHERE date BETWEEN '$sdate' AND '$edate' && m.mill_id = w.mill_id && m.worker_id = w.worker_id";
+                        $wages = "SELECT w.date,m.name,m.phnum,m.type,m.joining_date,w.amt FROM `worker_wages` w,mill_workers m WHERE date BETWEEN '$sdate' AND '$edate' && m.mill_id = w.mill_id && m.worker_id = w.worker_id && m.mill_id = {$_SESSION['mill_id']}";
                             $wages = mysqli_query($conn, $wages);
 
                         ?>
