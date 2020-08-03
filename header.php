@@ -76,7 +76,7 @@
 						<ul>
 							<li class="active"><a href="index.php">HOME</a></li>
 							<li><a href="about.php">ABOUT</a></li>
-							<li><a href="training.php">TRAINING</a></li>
+							
 							<li class="has-dropdown">
 								<a href="#">Login</a>
 								<ul class="dropdown">
