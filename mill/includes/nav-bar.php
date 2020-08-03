@@ -53,7 +53,7 @@
 						<li>
 							<a class="nav-link" href="report-date.php">
 								<i class="fa fa-calendar" aria-hidden="true"></i>
-								Report By Dates
+								Reports of Mill Dates
 							</a>
 						</li>
 					</ul>
