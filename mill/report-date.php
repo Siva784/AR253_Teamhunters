@@ -64,7 +64,7 @@
 
 			<section role="main" class="content-body">
 				<header class="page-header">
-					<h2>Dashboard</h2>
+					<h2>Mill Reports</h2>
 				</header>
 				<!-- start: page -->
 				<div class="row">
@@ -72,7 +72,7 @@
 						<section class="card">
 
 							<header class="card-header">
-								<h2 class="card-title">Crop Sold Details</h2>
+								<h2 class="card-title">Reports by date</h2>
 							</header>
 							<div class="card-body">
 								<form action="report-date.php" method="post">
