@@ -155,15 +155,6 @@
 	<script src="vendor/gauge/gauge.js"></script>
 	<script src="vendor/snap.svg/snap.svg.js"></script>
 	<script src="vendor/liquid-meter/liquid.meter.js"></script>
-	<script src="vendor/jqvmap/jquery.vmap.js"></script>
-	<script src="vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
-	<script src="vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 
 	<!-- Theme Base, Components and Settings -->
 	<script src="js/theme.js"></script>

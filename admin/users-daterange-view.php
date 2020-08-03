@@ -42,16 +42,7 @@
 
 <body>
 
-
-
-
-
-
-
-
-
 	<section class="body">
-
 		<!-- start: header -->
 		<?php include_once 'includes/header.php'; ?>
 		<!-- end: header -->
@@ -83,155 +74,117 @@
 				<div class="row">
 					<div class="col">
 						<section class="card">
-							
+
 							<div class="card-body">
-							<form action="#" method="POST">
-							<div class="form-group row">
-                                    
-                                    <div class="col-lg-3">
-                                        <label class="control-label pt-2" for="inputDefault">Start Date<span class="required">*</span></label>
-                                        <input type="date" name="startdate" class="form-control" id="start_date" value=''>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="control-label pt-2" for="inputDefault">End Date<span class="required">*</span></label>
-                                        <input type="date" name="enddate" class="form-control" id="start_date" value=''>
-                                    </div>
-									<div class="col-lg-3">
-									<button type="submit"  name="submit" class="btn btn-primary">Get Users</button>
-                                    </div>
-							</form>
-								
+								<form action="#" method="POST">
+									<div class="form-group row">
+
+										<div class="col-lg-3">
+											<label class="control-label pt-2" for="inputDefault">Start Date<span class="required">*</span></label>
+											<input type="date" name="startdate" class="form-control" id="start_date" value=''>
+										</div>
+										<div class="col-lg-3">
+											<label class="control-label pt-2" for="inputDefault">End Date<span class="required">*</span></label>
+											<input type="date" name="enddate" class="form-control" id="start_date" value=''>
+										</div>
+										<div class="col-lg-3">
+											<button type="submit" name="submit" class="btn btn-primary">Get Users</button>
+										</div>
+									</div>
+								</form>
+
 							</div>
 						</section>
 					</div>
 				</div>
 				<!-- end: page -->
-				</section>
-                <?php
-                if(isset($_POST['submit']))
-                {
-                    $startdate=$_POST['startdate'];
-                    $enddate=$_POST['enddate'];
-                    $dataavailability=1;
-                    
-                    $farquery="SELECT  `far_name`, `far_phnum`, `far_adhaar`,  `status`, `timestamp` FROM `farmers` WHERE timestamp BETWEEN '$startdate' and '$enddate'";
-                    $farresult=mysqli_query($conn,$farquery);
-                    $millquery="SELECT  `name`, `phnum`, `adhaar`, `status`, `timestamp` FROM `mills` WHERE  timestamp BETWEEN '$startdate' and '$enddate'";
-                    $millresult=mysqli_query($conn,$millquery);
-                    $numrows=mysqli_num_rows($farresult);
-                    $millnumrows=mysqli_num_rows($millresult);
-                    ?>
-				<section role="main" class="content-body">
-				<div class="row">
-				<div class="col">
-				<section class="card">
-							
-				<div class="card-body">
-                <table class="table table-bordered table-striped mb-0" id="datatable-default">
-									<thead>
-									
+				<?php
+				if (isset($_POST['submit'])) {
+					$startdate = $_POST['startdate'];
+					$enddate = $_POST['enddate'];
+					$dataavailability = 1;
+
+					$farquery = "SELECT  `far_name`, `far_phnum`, `far_adhaar`,  `status`, `timestamp` FROM `farmers` WHERE timestamp BETWEEN '$startdate' and '$enddate'";
+					$farresult = mysqli_query($conn, $farquery);
+					$millquery = "SELECT  `name`, `phnum`, `adhaar`, `status`, `timestamp` FROM `mills` WHERE  timestamp BETWEEN '$startdate' and '$enddate'";
+					$millresult = mysqli_query($conn, $millquery);
+					$numrows = mysqli_num_rows($farresult);
+					$millnumrows = mysqli_num_rows($millresult);
+				?>
+					<div class="row">
+						<div class="col">
+							<section class="card">
+
+								<div class="card-body">
+
+									<table class="table table-bordered table-striped mb-0" id="datatable-default">
+										<thead>
 											<th>Date</th>
 											<th>Name</th>
 											<th>Type</th>
 											<th>Mobile Number</th>
 											<th>Aadhar Number</th>
-                                            <th>Status</th>
-										
-									</thead>
-                <?php
-                if($numrows>0)
-                {
-                    ?>
-                    <?php
-                    while($row=mysqli_fetch_row($farresult)){
-                        
-                       ?>
-                        <tbody>
-                    <tr><td><?php echo "$row[4]" ?></td>
-                        <td><?php echo "$row[0]" ?></td>
-                        <td><?php echo "Farmer" ?></td>
-                        <td><?php echo "$row[1]" ?></td>
-                        <td><?php echo "$row[2]" ?></td>
-                        <td><?php  if($row[3]==0)
-                            {
-                                echo "Disapproved";
-                            }
-                            else{
-                                echo "Approved";
-                            }   
-                                ?>
-                                
-                                 </td></tr>
-                        </tbody>
-                        
-                    <?php
-                    
-                    }
+											<th>Status</th>
+										</thead>
+										<tbody>
+											<?php
+												while ($row = mysqli_fetch_row($farresult)) {
 
-                }
-                else{
-                    $dataavailability=0;
-                }
-                
-                
-                ?>
-                <?php
-                if($numrows>0)
-                {
-                    ?>
-                    <?php
-                    while($row=mysqli_fetch_row($millresult)){
-                        
-                       ?>
-                        <tbody>
-                    <tr><td><?php echo "$row[4]" ?></td>
-                        <td><?php echo "$row[0]" ?></td>
-                        <td><?php echo "Mill Owner" ?></td>
-                        <td><?php echo "$row[1]" ?></td>
-                        <td><?php echo "$row[2]" ?></td>
-                        <td><?php  if($row[3]==0)
-                            {
-                                echo "Disapproved";
-                            }
-                            else{
-                                echo "Approved";
-                            }   
-                                ?>
-                                
-                                 </td></tr>
-                        </tbody>
-                        
-                    <?php
-                    
-                    }
+												?>
+													<tr>
+														<td><?php echo "$row[4]" ?></td>
+														<td><?php echo "$row[0]" ?></td>
+														<td><?php echo "Farmer" ?></td>
+														<td><?php echo "$row[1]" ?></td>
+														<td><?php echo "$row[2]" ?></td>
+														<td><?php if ($row[3] == 0) {
+																echo "Disapproved";
+															} else {
+																echo "Approved";
+															}
+															?>
 
-                }
-                else{
-                    $dataavailability=0;
-                }
-                if($dataavailability==0)
-                {
-                    echo "No Data Available";
-                }
-                ?>
-                
-				</table>	
-				</div>
+														</td>
+													</tr>
 
-			</div>
-			
-			</div>
-			
-			
-			</div>
-			</section>
-            <?php
-                }
-            ?>
+											<?php
+												}
+											?>
+											<?php
+												while ($row = mysqli_fetch_row($millresult)) {
+
+												?>
+													<tr>
+														<td><?php echo "$row[4]" ?></td>
+														<td><?php echo "$row[0]" ?></td>
+														<td><?php echo "Mill Owner" ?></td>
+														<td><?php echo "$row[1]" ?></td>
+														<td><?php echo "$row[2]" ?></td>
+														<td><?php if ($row[3] == 0) {
+																echo "Disapproved";
+															} else {
+																echo "Approved";
+															}
+															?>
+
+														</td>
+													</tr>
+
+											<?php
+												}
+											?>
+										</tbody>
+									</table>
+								</div>
+							</section>
+						</div>
+					</div>
+				<?php
+				}
+				?>
 		</div>
-		</div>
-		</section>
 	</section>
+
 
 	<!-- Vendor -->
 	<script src="vendor/jquery/jquery.js"></script>
@@ -261,15 +214,6 @@
 	<script src="vendor/gauge/gauge.js"></script>
 	<script src="vendor/snap.svg/snap.svg.js"></script>
 	<script src="vendor/liquid-meter/liquid.meter.js"></script>
-	<script src="vendor/jqvmap/jquery.vmap.js"></script>
-	<script src="vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
-	<script src="vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
-	<script src="vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 
 	<!-- Theme Base, Components and Settings -->
 	<script src="js/theme.js"></script>
