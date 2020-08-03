@@ -45,13 +45,13 @@
 					</a>
 					<ul class="nav nav-children">
 						<li>
-							<a class="nav-link" href="worker-add.php">
+							<a class="nav-link" href="sales-add.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
 								Add Sales
 							</a>
 						</li>
 						<li>
-							<a class="nav-link" href="workers-view.php">
+							<a class="nav-link" href="sales-view.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
 								View Sales
 							</a>
