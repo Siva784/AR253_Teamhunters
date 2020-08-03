@@ -79,8 +79,8 @@
 										<th>Farmer Name</th>
 										<th>Farmer Mobile</th>
 										<th>Purchase Date</th>
-										<th>Quantity</th>
-										<th>Price in Rupees</th>
+										<th>Quantity (Kg)</th>
+										<th>Price (Rs.)</th>
 									</thead>
 									<tbody>
 									<?php 
