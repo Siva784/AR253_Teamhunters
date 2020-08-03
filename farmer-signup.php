@@ -82,7 +82,7 @@ if (isset($_POST['far_register'])) {
 
 											<div class="row form-group">
 												<div class="col-md-12">
-													<label for="fstate">Document</label>
+													<label for="fstate">Document</label><p>( Document which verifies you as a farmer<br>Example: Ecard,Kisan Card,Bhoomi Yajamanya Patram  )</p>
 													<input type="file" name='file' id='file'>
 
 												</div>
@@ -138,7 +138,11 @@ if (isset($_POST['far_register'])) {
 
 							</div>
 						</div>
-
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
 
 
 
