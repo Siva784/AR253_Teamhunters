@@ -171,10 +171,10 @@
 														<td><?php echo $crop['crop_start']; ?></td>
 														<td><?php echo $crop['crop_end']; ?></td>
 														<td><?php echo $crop['crop_acers']; ?></td>
-														<td><?php echo $crop_income['income_amt']; ?></td>
-														<td><?php echo $crop_investment['invest_amt']; ?></td>
-														<td><?php echo $sell['sell_price']; ?></td>
-														<td style="color: <?php echo $color; ?>;"><?php echo $sum; ?></td>
+														<td><?php echo "Rs ".$crop_income['income_amt']."/-"; ?></td>
+														<td><?php echo "Rs ".$crop_investment['invest_amt']."/-"; ?></td>
+														<td><?php echo "Rs ".$sell['sell_price']."/-"; ?></td>
+														<td style="color: <?php echo $color; ?>;"><?php echo "Rs ".$sum."/-"; ?></td>
 
 													</tr>
 												<?php } ?>
