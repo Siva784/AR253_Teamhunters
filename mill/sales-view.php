@@ -83,8 +83,8 @@
                                         <thead>
                                             <th>Date</th>
                                             <th>Product</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
+                                            <th>Quantity(Kg)</th>
+                                            <th>Price(Rs.)</th>
                                             <th>Delete</th>
                                             
                                         </thead>
