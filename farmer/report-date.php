@@ -198,7 +198,7 @@
 											<!-- Flot: Pie -->
 											<div class="chart chart-md" id="flotPie"></div>
 											<?php
-											$invest_re = "SELECT invest_reason,sum(invest_amt) as amt FROM `crop_investment` WHERE farmer_id=8 group by invest_reason";
+											$invest_re = "SELECT invest_reason,sum(invest_amt) as amt FROM `crop_investment` WHERE farmer_id={$_SESSION['far_id']} group by invest_reason";
 											$invest_re = mysqli_query($conn, $invest_re);
 
 											?>
