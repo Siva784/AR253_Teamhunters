@@ -6,7 +6,7 @@ session_start();
 <!-- Basic -->
 <meta charset="UTF-8">
 
-<title>Jute Industry| Farmer Login</title>
+<title>Jute Industry| Admin</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="mcr.org.in">
