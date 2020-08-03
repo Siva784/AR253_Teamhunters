@@ -222,7 +222,7 @@ Theme Version: 	2.1.1
 			data: morrisLineData,
 			xkey: 'y',
 			ykeys: ['a', 'b'],
-			labels: ['Series A', 'Series B'],
+			labels: ['White Jute', 'Tossa Jute'],
 			hideHover: true,
 			lineColors: ['#0088cc', '#734ba9'],
 		});
@@ -250,7 +250,7 @@ Theme Version: 	2.1.1
 			data: morrisBarData,
 			xkey: 'y',
 			ykeys: ['a', 'b'],
-			labels: ['Series A', 'Series B'],
+			labels: ['White Jute', 'Tossa Jute'],
 			hideHover: true,
 			barColors: ['#0088cc', '#2baab1']
 		});
@@ -266,7 +266,7 @@ Theme Version: 	2.1.1
 			data: morrisAreaData,
 			xkey: 'y',
 			ykeys: ['a', 'b'],
-			labels: ['Series A', 'Series B'],
+			labels: ['Income', 'Expediture'],
 			lineColors: ['#0088cc', '#2baab1'],
 			fillOpacity: 0.7,
 			hideHover: true
