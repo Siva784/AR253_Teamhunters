@@ -43,39 +43,42 @@
 <body>
 <section class="body">
 
-		<!-- start: header -->
-		<?php include_once 'includes/header.php'; ?>
-		<!-- end: header -->
+<!-- start: header -->
+<?php include_once 'includes/header.php'; ?>
+<!-- end: header -->
 
-		<div class="inner-wrapper">
-			<!-- start: sidebar -->
-			<aside id="sidebar-left" class="sidebar-left">
+<div class="inner-wrapper">
+	<!-- start: sidebar -->
+	<aside id="sidebar-left" class="sidebar-left">
 
-				<div class="sidebar-header">
-					<div class="sidebar-title">
-						Navigation
-					</div>
-					<div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
-						<i class="fas fa-bars" aria-label="Toggle sidebar"></i>
-					</div>
-				</div>
+		<div class="sidebar-header">
+			<div class="sidebar-title">
+				Navigation
+			</div>
+			<div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+				<i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+			</div>
+		</div>
 
-				<?php include 'includes/nav-bar.php'; ?>
+		<?php include 'includes/nav-bar.php'; ?>
 
-			</aside>
-			<!-- end: sidebar -->
+	</aside>
+	<!-- end: sidebar -->
 
+	<section role="main" class="content-body">
+		<header class="page-header">
+			<h2>Training</h2>
+		</header>
 
-
-
-
-
-
-
-<section class="body">
-            <h2 class="card-title">Training Content Details</h2>
-            <div class="card-body">
-                <form class="form-horizontal form-bordered" method="GET" action="training.php">
+		<!-- start: page -->
+		<div class="row">
+			<div class="col">
+				<section class="card">
+					<header class="card-header">
+						<h2 class="card-title">Training Content details</h2>
+					</header>
+					<div class="card-body">
+					<form class="form-horizontal form-bordered" method="GET" action="training.php">
                     
                     <div class="form-group row">
                         <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Category</label>
@@ -124,11 +127,12 @@
                     </div>
                     
                     </form>
-                
-            </div>
-        </header>
-
-		</section>
+					</div>
+				</section>
+			</div>
+		</div>
+		<!-- end: page -->
+	</section>
 </div>
 </section>
 	<!-- Vendor -->
