@@ -96,6 +96,12 @@
 					</ul>
 				</li>
 				<li>
+					<a class="nav-link" href="allmill-details.php">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						<span>Mills Reports</span>
+					</a>
+				</li>
+				<li>
 					<a class="nav-link" href="training-upload.php">
 						<i class="fa fa-home" aria-hidden="true"></i>
 						<span>Training Videos</span>
