@@ -67,6 +67,34 @@
 						
 					</ul>
 				</li>
+				<li class="nav-parent">
+					<a class="nav-link" href="#">
+						<i class="fas fa-certificate" aria-hidden="true"></i>
+						<span>Farmers Reports</span>
+					</a>
+					<ul class="nav nav-children">
+						<li>
+							<a class="nav-link" href="farmer-date-reports.php">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+								With in Date Range
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-parent">
+					<a class="nav-link" href="#">
+						<i class="fas fa-certificate" aria-hidden="true"></i>
+						<span>Worker Wages Reports</span>
+					</a>
+					<ul class="nav nav-children">
+						<li>
+							<a class="nav-link" href="allreport-wages.php">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+								With in Date Range
+							</a>
+						</li>
+					</ul>
+				</li>
 				<li>
 					<a class="nav-link" href="training-upload.php">
 						<i class="fa fa-home" aria-hidden="true"></i>
