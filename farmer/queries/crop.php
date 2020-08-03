@@ -41,9 +41,9 @@ if (isset($_POST['sell_crop'])) {
     // echo $sold;
     $sold = mysqli_query($conn, $sold);
     if ($sold) {
-        echo "Investements Added Successfully";
+        echo "Sell Crop Details Added Successfully";
     } else {
-        echo "Investements Not Added";
+        echo "Sell Crop Details Not Added";
     }
 }
 
