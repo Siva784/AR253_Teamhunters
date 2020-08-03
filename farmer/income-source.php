@@ -137,7 +137,7 @@
                                 <hr>
                                 <div class="form-group row">
                                     <div class="col-lg" style="text-align:center">
-                                        <button class='btn btn-primary' id='add' style='width:20%;' onclick='add();'>Sell</button>
+                                        <button class='btn btn-primary' id='add' style='width:20%;' onclick='add();'>Add Income</button>
                                     </div>
                                 </div>
                             </div>
