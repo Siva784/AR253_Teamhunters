@@ -266,7 +266,7 @@ Theme Version: 	2.1.1
 			data: morrisAreaData,
 			xkey: 'y',
 			ykeys: ['a', 'b'],
-			labels: ['Series A', 'Series B'],
+			labels: ['White Jute', 'Tossa Jute'],
 			lineColors: ['#0088cc', '#2baab1'],
 			fillOpacity: 0.7,
 			hideHover: true
