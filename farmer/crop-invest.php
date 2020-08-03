@@ -150,8 +150,9 @@
 								<table class="table table-bordered table-striped mb-0" id="datatable-default">
 									<thead>
 										<th>Investment Reason</th>
-										<th>Investment Amount</th>
+										
 										<th>Investment Date</th>
+										<th>Investment Amount</th>
 									</thead>
 									<tbody>
 										<?php
@@ -162,12 +163,12 @@
 												
 												<td><?php $sum = $sum + $investment['invest_amt'];echo $investment['invest_reason']; ?></td>
 												<td><?php echo $investment['invest_date']; ?></td>
-												<td><?php echo $investment['invest_amt']; ?></td>
+												<td><?php echo "Rs ".$investment['invest_amt']."/-"; ?></td>
 											</tr>
 										<?php } ?>
 										<tr>
 											<td colspan="2" style="text-align: right;">Total Investment Amount</td>
-											<td ><?php echo "$sum"; ?></td>
+											<td ><?php echo "Rs "."$sum"."/-"; ?></td>
 										</tr>
 									</tbody>
 								</table>
