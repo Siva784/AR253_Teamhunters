@@ -86,7 +86,7 @@
 											<th>Address</th>
 											<th>Phone Number</th>
 											<th>Type of Worker</th>
-											<th>Amount</th>
+											<th>Amount(Rs.)</th>
 											<th>Date</th>
 											<th>Add Wage</th>
 										</thead>
