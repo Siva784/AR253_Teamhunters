@@ -40,20 +40,20 @@
 
 				<li class="nav-parent">
 					<a class="nav-link" href="#">
-						<i class="fas fa-certificate" aria-hidden="true"></i>
+						<i class="fas fa-money" aria-hidden="true"></i>
 						<span>Sales</span>
 					</a>
 					<ul class="nav nav-children">
 						<li>
 							<a class="nav-link" href="worker-add.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
-								Add Mill Workers
+								Add Sales
 							</a>
 						</li>
 						<li>
 							<a class="nav-link" href="workers-view.php">
 								<i class="fa fa-plus" aria-hidden="true"></i>
-								View Mill Workers
+								View Sales
 							</a>
 						</li>
 					</ul>
