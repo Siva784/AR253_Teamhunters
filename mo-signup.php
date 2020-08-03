@@ -79,7 +79,7 @@ if (isset($_POST['mill_register'])) {
 											</div>
 											<div class="row form-group">
 												<div class="col-md-12">
-													<label for="fstate">Document</label>
+													<label for="fstate">Document</label><p>( Document which verifies you as a Mill Owner<br>Example :  Govt License etc.,  )</p>
 													<input type="file" name='file' id='file'>
 
 												</div>
@@ -143,7 +143,11 @@ if (isset($_POST['mill_register'])) {
 
 							</div>
 						</div>
-
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 

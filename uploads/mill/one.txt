@@ -1,0 +1,16 @@
+*Adding Income Source:
+                         -->Sell Button Should Be Add Income Source
+                         -->Alert Box Content
+
+*Selling Crop:
+              -->Alert Box Content
+
+
+*Sign Up Forms:
+                -->Some Problem in Footer Display
+                -->In Document Submit Section ,It is Not Mentioned What document should submit and which type of Document should Submit.
+
+
+*Dash Board:Name is Not Seen Properly
+
+*Training Button on Home page Is not redirecting To Correct Path
