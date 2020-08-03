@@ -104,7 +104,7 @@
                                 <div class="form-group row" style="text-align: center;">
                                     <div class="col-4"></div>
                                     <div class="col-lg-4">
-                                        <label class="control-label pt-2" for="inputDefault">Quantity<span class="required">*</span></label>
+                                        <label class="control-label pt-2" for="inputDefault">Quantity(Kg)<span class="required">*</span></label>
                                         <div class="col-lg">
                                             <input type="text" class="form-control" id="qty" value=''>
                                             <div id="name_err" style="color:red"></div>
@@ -114,7 +114,7 @@
                                 <div class="form-group row" style="text-align: center;">
                                     <div class="col-4"></div>
                                     <div class="col-lg-4">
-                                        <label class="control-label pt-2" for="inputDefault">Price<span class="required">*</span></label>
+                                        <label class="control-label pt-2" for="inputDefault">Price(Rs.)<span class="required">*</span></label>
                                         <div class="col-lg">
                                             <input type="text" class="form-control" id="amt" value=''>
                                             <div id="name_err" style="color:red"></div>
