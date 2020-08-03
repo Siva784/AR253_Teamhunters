@@ -134,7 +134,7 @@
                                                 <th>Worker Mobile</th>
                                                 <th>Type</th>
                                                 <th>Joining Date</th>
-                                                <th>Amount</th>
+                                                <th>Amount(Rs.)</th>
                                             </thead>
                                             <tbody>
                                                 <?php
