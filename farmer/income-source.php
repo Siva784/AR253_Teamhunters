@@ -159,12 +159,12 @@
                                                 <td><?php $sum = $sum + $income['income_amt'];
                                                     echo $income['income_source']; ?></td>
                                                 <td><?php echo $income['income_date']; ?></td>
-                                                <td><?php echo $income['income_amt']; ?></td>
+                                                <td><?php echo "Rs ".$income['income_amt']."/-"; ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
                                             <td colspan="2" style="text-align: right;">Total Amount</td>
-                                            <td><?php echo "$sum"; ?></td>
+                                            <td><?php echo "Rs "."$sum"."/-"; ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
