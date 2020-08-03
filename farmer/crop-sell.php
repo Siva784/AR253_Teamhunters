@@ -174,12 +174,12 @@
 												<td><?php $sum = $sum + $sell['sell_price'];
 													echo $mill['mill_name']; ?></td>
 												<td><?php echo $sell['sell_qty']; ?></td>
-												<td><?php echo $sell['sell_price']; ?></td>
+												<td><?php echo "Rs ".$sell['sell_price']."/-"; ?></td>
 											</tr>
 										<?php } ?>
 										<tr>
 											<td colspan="2" style="text-align: right;">Total Amount</td>
-											<td><?php echo "$sum"; ?></td>
+											<td><?php echo "Rs"."$sum"."/-"; ?></td>
 										</tr>
 									</tbody>
 								</table>
